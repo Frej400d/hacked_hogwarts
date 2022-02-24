@@ -1,0 +1,39 @@
+/*student list*/
+
+#container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-content: center;
+  margin-top: 5em;
+  margin-left: 20em;
+  margin-right: 20em;
+}
+/*student article*/
+article {
+  border: 1px solid #8c1127;
+  border-radius: 25px;
+  padding: 10px;
+  margin: 1em;
+  background-color: #ffffff;
+  display: grid;
+  justify-content: center;
+}
+
+article .fullname {
+  display: flex;
+  justify-content: center;
+}
+
+article .lastname {
+  margin-left: 0.4em;
+}
+
+.student_img {
+  min-height: 150px;
+  justify-self: center;
+}
+
+.descrip {
+  display: flex;
+  justify-content: space-around;
+}
