@@ -7,7 +7,39 @@
     <title>Hacked Hogwarts Student List</title>
     <link rel="stylesheet" href="style.css" />
   </head>
+
+  <header>
+    <section id="interface"></section>
+    <section id="searchbar"></section>
+    <!--     <section><h1>Filter</h1></section>
+    <nav>
+      <ul>
+        <button data-movie="alle" class="valgt">Alle</button>
+        <button data-movie="Pulp Fiction">Pulp Fiction</button>
+        <button data-movie="Fight Club">Fight Club</button>
+        <button data-movie="Goodfellas">Goodfellas</button>
+        <button data-movie="Inception">Inception</button>
+      </ul>
+    </nav>
+    </section> -->
+  </header>
+
   <body>
+    <section id="container"></section>
+
+    <template id="student">
+      <article>
+        <div>
+          <h3 class="firstname"></h3>
+          <h3 class="lastname"></h3>
+        </div>
+        <img class="student_img" src="" alt="" />
+        <div>
+          <p class="house"></p>
+          <p class="gender"></p>
+        </div>
+      </article>
+    </template>
     <script src="script.js"></script>
   </body>
 </html>

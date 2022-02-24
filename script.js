@@ -49,6 +49,7 @@ function prepareStudents() {
 
     allStudents.push(student);
   });
+  displayList(allStudents);
 }
 
 function getFirstName(fullname) {
@@ -151,4 +152,32 @@ function cleanData(data) {
   const lowerCaseRest = data.slice(1).toLowerCase();
   const cleanData = capFirstLetter + lowerCaseRest;
   return cleanData;
+}
+
+function buildList() {
+  displayList();
+}
+
+function displayList(student) {
+  // clear the list
+  document.querySelector("#container").innerHTML = "";
+
+  // build a new list
+  student.forEach(displayStudent);
+}
+
+function displayStudent(student) {
+  //create clone
+  const clone = document
+    .querySelector("template#student")
+    .content.cloneNode(true);
+
+  //set clone data
+  clone.querySelector(".firstname").textContent = student.firstName;
+  clone.querySelector(".lastname").textContent = student.lastName;
+  clone.querySelector("img.student_img").src = student.img;
+  clone.querySelector(".house").textContent = student.house;
+  clone.querySelector(".gender").textContent = student.gender;
+
+  document.querySelector("#container").appendChild(clone);
 }
