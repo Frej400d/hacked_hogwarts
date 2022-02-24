@@ -102,7 +102,7 @@ function setFilter(filter) {
 //House filter functions
 //gryffindor
 function isGryffindor(student) {
-  if (student.house === "gryffindor") {
+  if (student.house === "Gryffindor") {
     return true;
   } else {
     return false;
@@ -111,7 +111,7 @@ function isGryffindor(student) {
 
 //slytherin
 function isSlytherin(student) {
-  if (student.house === "slytherin") {
+  if (student.house === "Slytherin") {
     return true;
   } else {
     return false;
@@ -119,7 +119,7 @@ function isSlytherin(student) {
 }
 //ravenclaw
 function isRavenclaw(student) {
-  if (student.house === "ravenclaw") {
+  if (student.house === "Ravenclaw") {
     return true;
   } else {
     return false;
@@ -128,7 +128,7 @@ function isRavenclaw(student) {
 
 //hufflepuff
 function isHufflepuff(student) {
-  if (student.house === "hufflepuff") {
+  if (student.house === "Hufflepuff") {
     return true;
   } else {
     return false;
