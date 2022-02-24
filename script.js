@@ -2,7 +2,6 @@
 window.addEventListener("DOMContentLoaded", start);
 
 //student object
-
 const Student = {
   firstName: "",
   lastName: "",
@@ -14,29 +13,63 @@ const Student = {
 };
 
 //empty array for students
-const allStudents = [];
+let allStudents = [];
 
 //url to json data
 const url = "https://petlatkea.dk/2021/hogwarts/students.json";
 
-let hogwartsData;
+//let hogwartsData;
+
+const settings = {
+  filterBy: "all",
+  sortBy: "name",
+  sortDir: "asc",
+};
 
 function start() {
-  console.log("hej Hogwarts");
+  console.log("Hej Hogwarts");
+  buttonListener();
+}
+
+function buttonListener() {
+  const filterButtons = document.querySelectorAll(".filter");
+  filterButtons.forEach((button) =>
+    button.addEventListener("click", selectFilter)
+  );
   loadJSON();
 }
 
 async function loadJSON() {
   const jsonData = await fetch(url);
-  hogwartsData = await jsonData.json();
+  const hogwartsData = await jsonData.json();
   //show hogwarts data in a table in the console
   //console.table(hogwartsData);
   //call createStudents function
-  prepareStudents();
+  prepareObjects(hogwartsData);
+}
+
+function prepareObjects(hogwartsData) {
+  allStudents = hogwartsData.map(prepareStudents);
+  buildList();
+}
+
+function prepareStudents(stud) {
+  const student = Object.create(Student);
+
+  student.firstName = getFirstName(stud.fullname.trim());
+  student.middleName = getMiddleName(stud.fullname.trim());
+  student.nickName = getNickname(stud.fullname.trim());
+  student.lastName = getLastName(stud.fullname.trim());
+  student.gender = getGender(stud.gender.trim());
+  student.house = getHouse(stud.house.trim());
+  student.img = getStudentImg(stud.fullname.trim());
+
+  return student;
+  //allStudents.push(student);
 }
 
 //delegator
-function prepareStudents() {
+/* function prepareStudents() {
   hogwartsData.forEach((stud) => {
     const student = Object.create(Student);
     student.firstName = getFirstName(stud.fullname.trim());
@@ -47,9 +80,74 @@ function prepareStudents() {
     student.house = getHouse(stud.house.trim());
     student.img = getStudentImg(stud.fullname.trim());
 
-    allStudents.push(student);
+    return student;
+    //allStudents.push(student);
   });
-  displayList(allStudents);
+} */
+
+//------filter function
+function selectFilter(event) {
+  //filter on a criteria
+  const filter = event.target.dataset.filter;
+  console.log(`User selected ${filter}`);
+  setFilter(filter);
+}
+
+function setFilter(filter) {
+  settings.filterBy = filter;
+  console.log("setfilter");
+  buildList();
+}
+
+//House filter functions
+//gryffindor
+function isGryffindor(student) {
+  if (student.house === "gryffindor") {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+//slytherin
+function isSlytherin(student) {
+  if (student.house === "slytherin") {
+    return true;
+  } else {
+    return false;
+  }
+}
+//ravenclaw
+function isRavenclaw(student) {
+  if (student.house === "ravenclaw") {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+//hufflepuff
+function isHufflepuff(student) {
+  if (student.house === "hufflepuff") {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function studentFilter(filteredList) {
+  //get filter depending on data-filter attribute
+  //filter allStudents with correct filter function  and put it into filteredAnimals
+  if (settings.filterBy === "gryffindor") {
+    filteredList = allStudents.filter(isGryffindor);
+  } else if (settings.filterBy === "slytherin") {
+    filteredList = allStudents.filter(isSlytherin);
+  } else if (settings.filterBy === "ravenclaw") {
+    filteredList = allStudents.filter(isRavenclaw);
+  } else if (settings.filterBy === "hufflepuff") {
+    filteredList = allStudents.filter(isHufflepuff);
+  }
+  return filteredList;
 }
 
 function getFirstName(fullname) {
@@ -155,7 +253,10 @@ function cleanData(data) {
 }
 
 function buildList() {
-  displayList();
+  const currentList = studentFilter(allStudents);
+  console.log(currentList);
+
+  displayList(currentList);
 }
 
 function displayList(student) {
