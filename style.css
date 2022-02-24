@@ -13,7 +13,7 @@ header {
   margin-right: 20em;
 }
 /*student article*/
-article {
+article#student_article {
   border: 1px solid #8c1127;
   border-radius: 25px;
   padding: 10px;
@@ -51,4 +51,52 @@ img.filter {
 #sorting {
   display: flex;
   justify-content: space-between;
+}
+
+/*pop up*/
+#popup {
+  width: 100vw;
+  height: 100vw;
+  background-color: #00000099;
+  position: fixed;
+  top: 0;
+  display: none;
+  justify-content: center;
+}
+
+#popupinfo {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 3fr;
+  margin-top: 10em;
+  text-align: center;
+  width: 40vw;
+  margin-inline: auto;
+  border: 3px solid #400913;
+  background-color: #ffffff;
+}
+
+.popup_fullname {
+  display: flex;
+  justify-content: center;
+}
+.popup_firstname {
+  margin-right: 0.4em;
+}
+
+.popup_lastname {
+  margin-left: 0.3em;
+}
+
+.popup_studentimg {
+  grid-row: 2;
+  min-height: 150px;
+  justify-self: center;
+}
+
+#close_popup {
+  grid-column: 3/4;
+  min-width: 3em;
+  max-height: 3em;
+  justify-self: end;
 }

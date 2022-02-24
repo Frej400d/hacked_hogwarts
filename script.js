@@ -186,7 +186,6 @@ function sortedStudents(sortedList) {
   sortedList = sortedList.sort(sortByProperty);
 
   function sortByProperty(a, b) {
-    console.log("clicked");
     if (a[settings.sortBy] < b[settings.sortBy]) {
       return -1 * direction;
     } else {
@@ -330,6 +329,29 @@ function displayStudent(student) {
   clone.querySelector("img.student_img").src = student.img;
   clone.querySelector(".house").textContent = student.house;
   clone.querySelector(".gender").textContent = student.gender;
-
+  clone
+    .querySelector("#student_article")
+    .addEventListener("click", () => showPopup(student));
   document.querySelector("#container").appendChild(clone);
+}
+
+//popup details for students
+function showPopup(studentData) {
+  const popup = document.querySelector("#popup");
+  popup.style.display = "block";
+  popup.querySelector(".popup_studentimg").src = studentData.img;
+  popup.querySelector(".popup_firstname").textContent = studentData.firstName;
+  popup.querySelector(".popup_middlename").textContent = studentData.middleName;
+  popup.querySelector(".popup_nickname").textContent = studentData.nickName;
+  popup.querySelector(".popup_lastname").textContent = studentData.lastName;
+  popup.querySelector(".popup_gender").textContent = studentData.gender;
+  popup.querySelector(".house").textContent = studentData.house;
+  console.log(studentData);
+
+  //make close button
+  document.querySelector("#close_popup").addEventListener("click", closePopup);
+
+  function closePopup() {
+    document.querySelector("#popup").style.display = "none";
+  }
 }
