@@ -1,5 +1,9 @@
-/*student list*/
+header {
+  margin-left: 20em;
+  margin-right: 20em;
+}
 
+/*student list*/
 #container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -36,4 +40,15 @@ article .lastname {
 .descrip {
   display: flex;
   justify-content: space-around;
+}
+
+/*filter buttons*/
+img.filter {
+  max-height: 6em;
+}
+
+/*sorting buttons*/
+#sorting {
+  display: flex;
+  justify-content: space-between;
 }

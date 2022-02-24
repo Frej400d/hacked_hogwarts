@@ -32,10 +32,15 @@ function start() {
 }
 
 function buttonListener() {
+  //filter buttons
   const filterButtons = document.querySelectorAll(".filter");
   filterButtons.forEach((button) =>
     button.addEventListener("click", selectFilter)
   );
+
+  //sort buttons
+  const sortButtons = document.querySelectorAll(".sort");
+  sortButtons.forEach((knap) => knap.addEventListener("click", selectSort));
   loadJSON();
 }
 
@@ -52,7 +57,7 @@ function prepareObjects(hogwartsData) {
   allStudents = hogwartsData.map(prepareStudents);
   buildList();
 }
-
+//delegator
 function prepareStudents(stud) {
   const student = Object.create(Student);
 
@@ -68,7 +73,6 @@ function prepareStudents(stud) {
   //allStudents.push(student);
 }
 
-//delegator
 /* function prepareStudents() {
   hogwartsData.forEach((stud) => {
     const student = Object.create(Student);
@@ -85,7 +89,7 @@ function prepareStudents(stud) {
   });
 } */
 
-//------filter function
+//filter
 function selectFilter(event) {
   //filter on a criteria
   const filter = event.target.dataset.filter;
@@ -148,6 +152,49 @@ function studentFilter(filteredList) {
     filteredList = allStudents.filter(isHufflepuff);
   }
   return filteredList;
+}
+
+function selectSort(event) {
+  console.log("click");
+  const sortBy = event.target.dataset.sort;
+  const sortDir = event.target.dataset.sortDirection;
+
+  //toggle the direction
+  if (sortDir === "asc") {
+    event.target.dataset.sortDirection = "desc";
+  } else {
+    event.target.dataset.sortDirection = "asc";
+  }
+
+  setSort(sortBy, sortDir);
+}
+
+function setSort(sortBy, sortDir) {
+  settings.sortBy = sortBy;
+  settings.sortDir = sortDir;
+  buildList();
+}
+
+function sortedStudents(sortedList) {
+  let direction = 1;
+  if (settings.sortDir === "desc") {
+    direction = -1;
+  } else {
+    settings.direction = 1;
+  }
+
+  sortedList = sortedList.sort(sortByProperty);
+
+  function sortByProperty(a, b) {
+    console.log("clicked");
+    if (a[settings.sortBy] < b[settings.sortBy]) {
+      return -1 * direction;
+    } else {
+      return 1 * direction;
+    }
+  }
+
+  return sortedList;
 }
 
 function getFirstName(fullname) {
@@ -238,6 +285,9 @@ function getStudentImg(fullname) {
     );
     const image = `img/${smallLastNameShort}_${imgFirstNameFirstLetter}.png`;
     return image;
+  } else if (smallLastName === "leanne") {
+    const image = `img/default.png`;
+    return image;
   } else {
     const image = `img/${smallLastName}_${imgFirstNameFirstLetter}.png`;
     return image;
@@ -255,8 +305,9 @@ function cleanData(data) {
 function buildList() {
   const currentList = studentFilter(allStudents);
   console.log(currentList);
+  const sortedList = sortedStudents(currentList);
 
-  displayList(currentList);
+  displayList(sortedList);
 }
 
 function displayList(student) {
