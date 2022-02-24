@@ -6,65 +6,136 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Hacked Hogwarts Student List</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
-  <header>
-    <section id="interface"></section>
-    <section id="searchbar"></section>
-    <section><h2>Filter</h2></section>
-    <nav>
-      <ul>
-        <img class="filter" data-action="filter" data-filter="*" src="billeder/logo.png" alt="All">
-        <img class="filter" data-action="filter" data-filter="gryffindor" src="billeder/gryffindor_1.png" alt="Gryffindor">
-        <img class="filter" data-action="filter" data-filter="slytherin" src="billeder/slytherin.png" alt="Slytherin">
-        <img class="filter" data-action="filter" data-filter="ravenclaw" src="billeder/ravenclaw.png" alt="Ravenclaw">
-        <img class="filter" data-action="filter" data-filter="hufflepuff" src="billeder/hufflepuff.png" alt="Hufflepuff">
-      </ul>
-    </nav>
-    </section> 
-    <section id="sorting">
- <p class="sort" data-action="sort" data-sort-direction="asc" data-sort="firstName">Firstname</p>
-  <p class="sort" data-action="sort" data-sort-direction="asc" data-sort="lastName">Lastname</p>
-   <p class="sort" data-action="sort" data-sort-direction="asc" data-sort="prefect">Prefect</p>
-  </section>
-  </header>
-
-
-<!--  <button class="filter" data-action="filter" data-filter="*">All</button>
-       <button class="filter" data-action="filter" data-filter="gryffindor">
-        Gryffindor
-      </button>
-      <button class="filter" data-action="filter" data-filter="slytherin">
-       Slytherin
-      </button>
-    
-  <button class="filter" data-action="filter" data-filter="ravenclaw">
-      Ravenclaw
-      </button>
-        <button class="filter" data-action="filter" data-filter="hufflepuff">
-      Hufflepuff
-      </button> -->
-
   <body>
-<section id="popup">
+    <header>
+      <section id="interface">
+        <h1>Hogwarts Student List</h1>
+      </section>
+    </header>
 
+    <section id="student_list">
+      <div id="filter_sort_search_container">
+        <div id="filter_container">
+          <h2>Filter:</h2>
+          <nav>
+            <ul>
+              <img
+                class="filter"
+                data-action="filter"
+                data-filter="*"
+                src="billeder/logo.png"
+                alt="All"
+              />
+              <img
+                class="filter"
+                data-action="filter"
+                data-filter="gryffindor"
+                src="billeder/gryffindor_1.png"
+                alt="Gryffindor"
+              />
+              <img
+                class="filter"
+                data-action="filter"
+                data-filter="slytherin"
+                src="billeder/slytherin.png"
+                alt="Slytherin"
+              />
+              <img
+                class="filter"
+                data-action="filter"
+                data-filter="ravenclaw"
+                src="billeder/ravenclaw.png"
+                alt="Ravenclaw"
+              />
+              <img
+                class="filter"
+                data-action="filter"
+                data-filter="hufflepuff"
+                src="billeder/hufflepuff.png"
+                alt="Hufflepuff"
+              />
+            </ul>
+          </nav>
+        </div>
+        <div id="status_container"></div>
+      </div>
+
+      <div id="sort_and_search">
+        <div id="sorting">
+          <h2>Sort:</h2>
+          <p
+            class="sort"
+            data-action="sort"
+            data-sort-direction="asc"
+            data-sort="firstName"
+          >
+            Firstname
+          </p>
+          <p
+            class="sort"
+            data-action="sort"
+            data-sort-direction="asc"
+            data-sort="lastName"
+          >
+            Lastname
+          </p>
+          <p
+            class="sort"
+            data-action="sort"
+            data-sort-direction="asc"
+            data-sort="prefect"
+          >
+            House
+          </p>
+          <p
+            class="sort"
+            data-action="sort"
+            data-sort-direction="asc"
+            data-sort="prefect"
+          >
+            Prefect
+          </p>
+        </div>
+        <div id="search_container">
+          <img src="billeder/search_icon.png" alt="search_icon" />
+          <input class="search" type="text" placeholder="Search.." />
+        </div>
+      </div>
+      <hr />
+      <!-- Container til alle vores students -->
+      <div id="student_container"></div>
+    </section>
+
+    <section id="popup">
       <article id="popupinfo">
-       <div class="popup_fullname">
-      <h3 class="popup_firstname"></h3>
-      <h3 class="popup_middlename"></h3>
-      <h3 class="popup_nickname"></h3>
-      <h3 class="popup_lastname"></h3> </div>
-      <img class="popup_studentimg" src="" alt="">
-         <button id="close_popup">X</button>
-      
-      <p class="popup_gender"></p>
-      <p class="house"></p>
+        <div class="popup_fullname">
+          <h3 class="popup_firstname"></h3>
+          <h3 class="popup_middlename"></h3>
+          <h3 class="popup_nickname"></h3>
+          <h3 class="popup_lastname"></h3>
+        </div>
+        <img class="popup_studentimg" src="" alt="" />
+        <button id="close_popup">X</button>
+
+        <p class="popup_gender"></p>
+        <p class="house"></p>
       </article>
     </section>
-    <section id="container"></section>
 
     <template id="student">
-      <article id="student_article"> 
+      <article id="student_article">
         <div class="fullname">
           <h3 class="firstname"></h3>
           <h3 class="lastname"></h3>

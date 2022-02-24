@@ -1,20 +1,66 @@
+@font-face {
+  font-family: magicSchool1;
+  src: url(fonts/MagicSchoolOne.ttf);
+}
+
+@font-face {
+  font-family: magicSchool2;
+  src: url(fonts/MagicSchoolTwo.ttf);
+}
+
+h1 {
+  text-align: center;
+  font-family: magicSchool2;
+  font-size: 7em;
+  color: #ffb72d;
+  margin: 0;
+}
+
+h2 {
+  color: #050c26;
+  font-family: magicSchool2;
+  font-size: 2em;
+  margin: 0;
+  margin-left: 1em;
+}
+
 header {
-  margin-left: 20em;
-  margin-right: 20em;
+  margin: auto;
+}
+
+body {
+  background-color: #050c26;
+}
+
+hr {
+  color: #ffb72d;
+  border: 2px solid #ffb72d;
+  margin-left: 2em;
+  margin-right: 2em;
+  margin-top: 1em;
 }
 
 /*student list*/
-#container {
+
+#student_list {
+  background-color: white;
+  border: 6px solid #ffb72d;
+  margin-top: auto;
+
+  border-radius: 5px;
+}
+
+#student_container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   justify-content: center;
-  margin-top: 5em;
-  margin-left: 20em;
-  margin-right: 20em;
+  border-radius: 5px;
+  margin-left: 1em;
+  margin-right: 1em;
 }
 /*student article*/
 article#student_article {
-  border: 1px solid #8c1127;
+  border: 2px solid #050c26;
   border-radius: 25px;
   padding: 10px;
   margin: 1em;
@@ -24,6 +70,8 @@ article#student_article {
 }
 
 article .fullname {
+  font-family: "Lobster", cursive;
+  font-size: 1.5em;
   display: flex;
   justify-content: center;
 }
@@ -42,18 +90,86 @@ article .lastname {
   justify-content: space-around;
 }
 
+/*filter layout*/
+#filter_sort_search_container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+#filter_container {
+  display: flex;
+}
+
+#filter_container ul {
+  padding: 0;
+}
+
+#filter_container h2 {
+  margin-left: 1em;
+  margin-right: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 /*filter buttons*/
+
 img.filter {
   max-height: 6em;
+  margin-left: 1em;
+  margin-right: 1.5em;
+}
+
+#sort_and_search {
+  display: grid;
+  grid-template-columns: 3fr 1fr 3fr;
 }
 
 /*sorting buttons*/
 #sorting {
   display: flex;
-  justify-content: space-between;
 }
 
-/*pop up*/
+.sort {
+  font-family: "Qwitcher Grypen", cursive;
+  font-size: 2em;
+  background-color: white;
+  margin-right: 0;
+  margin-left: 1em;
+  margin-bottom: 0;
+  margin-top: 0;
+  padding: 5px;
+  border: 1px solid #050c26;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/*search bar*/
+#search_container {
+  margin-right: 2em;
+  grid-column: 3/4;
+  display: flex;
+}
+
+#search_container img {
+  max-height: 3.5em;
+  margin-right: 1em;
+}
+
+.search {
+  font-family: "Qwitcher Grypen", cursive;
+  font-size: 2em;
+  border: 1px solid #050c26;
+  border-radius: 5px;
+  height: 1.6em;
+  width: 80%;
+  padding-left: 20px;
+  padding-right: 10px;
+
+  outline: 0;
+  background-color: white;
+}
+
+/*pop up padding: 2px 14px 2px 0px;*/
 #popup {
   width: 100vw;
   height: 100vw;
@@ -99,4 +215,28 @@ img.filter {
   min-width: 3em;
   max-height: 3em;
   justify-self: end;
+}
+
+/* responsive styling*/
+
+@media (min-width: 780px) {
+}
+
+@media (min-width: 1300px) {
+  #student_list {
+    margin-left: 10em;
+    margin-right: 10em;
+  }
+}
+
+@media (min-width: 1500px) {
+  header {
+    margin-left: 20em;
+    margin-right: 20em;
+  }
+
+  #student_list {
+    margin-left: 20em;
+    margin-right: 20em;
+  }
 }

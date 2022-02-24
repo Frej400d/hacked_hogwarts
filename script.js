@@ -311,7 +311,7 @@ function buildList() {
 
 function displayList(student) {
   // clear the list
-  document.querySelector("#container").innerHTML = "";
+  document.querySelector("#student_container").innerHTML = "";
 
   // build a new list
   student.forEach(displayStudent);
@@ -332,7 +332,7 @@ function displayStudent(student) {
   clone
     .querySelector("#student_article")
     .addEventListener("click", () => showPopup(student));
-  document.querySelector("#container").appendChild(clone);
+  document.querySelector("#student_container").appendChild(clone);
 }
 
 //popup details for students
