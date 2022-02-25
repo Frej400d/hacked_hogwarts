@@ -24,6 +24,7 @@ const settings = {
   filterBy: "all",
   sortBy: "name",
   sortDir: "asc",
+  searchBy: "",
 };
 
 function start() {
@@ -41,17 +42,39 @@ function buttonListener() {
   //sort buttons
   const sortButtons = document.querySelectorAll(".sort");
   sortButtons.forEach((knap) => knap.addEventListener("click", selectSort));
+
+  const searchBar = document.querySelector("#searchBar");
+  searchBar.addEventListener("keyup", selectSearch);
+  //console.log(event.target.value);
+
   loadJSON();
 }
 
-function rotateArrow() {
+function selectSearch(event) {
+  const searchFilter = event.target.value;
+  setSearch(searchFilter);
+}
+
+function setSearch(searchFilter) {
+  settings.searchBy = searchFilter;
+  buildList();
+}
+
+function searchFunction(searchedStudents) {
+  searchedStudents = allStudents.filter((student) => {
+    return student.firstName.toLowerCase().includes(settings.searchBy);
+  });
+  return searchedStudents;
+}
+
+/* function rotateArrow() {
   console.log("arrow func");
   //const arrow = document.querySelectorAll(".arrows");
 
   //arrow.classList.add("rotate");
 
   selectSort();
-}
+} */
 
 async function loadJSON() {
   const jsonData = await fetch(url);
@@ -323,10 +346,10 @@ function cleanData(data) {
 }
 
 function buildList() {
-  const currentList = studentFilter(allStudents);
-  console.log(currentList);
+  const searchList = searchFunction(allStudents);
+  const currentList = studentFilter(searchList);
+  //const searchList = searchFunction(currentList);
   const sortedList = sortedStudents(currentList);
-
   displayList(sortedList);
 }
 
