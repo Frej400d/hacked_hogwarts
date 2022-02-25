@@ -44,6 +44,15 @@ function buttonListener() {
   loadJSON();
 }
 
+function rotateArrow() {
+  console.log("arrow func");
+  //const arrow = document.querySelectorAll(".arrows");
+
+  //arrow.classList.add("rotate");
+
+  selectSort();
+}
+
 async function loadJSON() {
   const jsonData = await fetch(url);
   const hogwartsData = await jsonData.json();
@@ -94,6 +103,8 @@ function selectFilter(event) {
   //filter on a criteria
   const filter = event.target.dataset.filter;
   console.log(`User selected ${filter}`);
+  document.querySelector(".chosen").classList.remove("chosen");
+  this.classList.add("chosen");
   setFilter(filter);
 }
 
@@ -156,6 +167,8 @@ function studentFilter(filteredList) {
 
 function selectSort(event) {
   console.log("click");
+  /*   document.querySelector(".arrows").classList.remove("rotate");
+  document.querySelector(".arrows").classList.add("rotate"); */
   const sortBy = event.target.dataset.sort;
   const sortDir = event.target.dataset.sortDirection;
 
@@ -176,6 +189,8 @@ function setSort(sortBy, sortDir) {
 }
 
 function sortedStudents(sortedList) {
+  /*   const arrows = document.querySelectorAll(".arrow"); */
+
   let direction = 1;
   if (settings.sortDir === "desc") {
     direction = -1;
@@ -183,6 +198,12 @@ function sortedStudents(sortedList) {
     settings.direction = 1;
   }
 
+  /*   if (settings.sortDir === "desc") {
+    arrows.textContent = "⭐";
+  } else if (settings.sortDir === "asc") {
+    arrows.textContent = "☆";
+  }
+ */
   sortedList = sortedList.sort(sortByProperty);
 
   function sortByProperty(a, b) {

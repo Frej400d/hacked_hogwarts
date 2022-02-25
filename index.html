@@ -32,7 +32,7 @@
           <nav>
             <ul>
               <img
-                class="filter"
+                class="filter chosen"
                 data-action="filter"
                 data-filter="*"
                 src="billeder/logo.png"
@@ -75,27 +75,32 @@
       <div id="sort_and_search">
         <div id="sorting">
           <h2>Sort:</h2>
+          <div class="sort_wrapper">
+            <p
+              class="sort"
+              data-action="sort"
+              data-sort-direction="asc"
+              data-sort="firstName"
+            >
+              Firstname
+            </p>
+          </div>
+          <div class="sort_wrapper">
+            <p
+              class="sort"
+              data-action="sort"
+              data-sort-direction="asc"
+              data-sort="lastName"
+            >
+              Lastname
+            </p>
+          </div>
+
           <p
             class="sort"
             data-action="sort"
             data-sort-direction="asc"
-            data-sort="firstName"
-          >
-            Firstname
-          </p>
-          <p
-            class="sort"
-            data-action="sort"
-            data-sort-direction="asc"
-            data-sort="lastName"
-          >
-            Lastname
-          </p>
-          <p
-            class="sort"
-            data-action="sort"
-            data-sort-direction="asc"
-            data-sort="prefect"
+            data-sort="house"
           >
             House
           </p>

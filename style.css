@@ -117,14 +117,25 @@ img.filter {
   max-height: 6em;
   margin-left: 1em;
   margin-right: 1.5em;
+  padding: 5px;
+}
+
+img.filter:hover {
+  scale: 1.1;
+}
+
+.chosen {
+  background-color: #050c26;
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px 5px #ffb72d;
 }
 
 #sort_and_search {
   display: grid;
-  grid-template-columns: 3fr 1fr 3fr;
+  grid-template-columns: 5fr 1fr 3fr;
 }
 
-/*sorting buttons*/
+/*sorting buttons border: 1px solid #050c26;*/
 #sorting {
   display: flex;
 }
@@ -133,14 +144,28 @@ img.filter {
   font-family: "Qwitcher Grypen", cursive;
   font-size: 2em;
   background-color: white;
-  margin-right: 0;
+  margin-right: 1em;
   margin-left: 1em;
   margin-bottom: 0;
   margin-top: 0;
   padding: 5px;
-  border: 1px solid #050c26;
+
   border-radius: 5px;
   cursor: pointer;
+}
+
+.sort_wrapper {
+  display: flex;
+}
+
+.arrow {
+  display: flex;
+}
+
+.arrows {
+  max-height: 1em;
+  min-height: 2em;
+  margin: auto;
 }
 
 /*search bar*/
@@ -217,6 +242,23 @@ img.filter {
   justify-self: end;
 }
 
+/*animationer*/
+.rotate {
+  -ms-transform: rotate(180deg); /* IE 9 */
+  transform: rotate(180deg);
+}
+/* .rotate {
+  animation-name: rotation;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes rotation {
+  100% {
+    transform: rotate(180deg);
+  }
+}
+ */
 /* responsive styling*/
 
 @media (min-width: 780px) {
