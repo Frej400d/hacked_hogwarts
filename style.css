@@ -242,6 +242,10 @@ img.filter:hover {
   justify-self: end;
 }
 
+#prefect_img {
+  max-height: 6em;
+}
+
 /*animationer*/
 .rotate {
   -ms-transform: rotate(180deg); /* IE 9 */

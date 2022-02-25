@@ -62,7 +62,10 @@ function setSearch(searchFilter) {
 
 function searchFunction(searchedStudents) {
   searchedStudents = allStudents.filter((student) => {
-    return student.firstName.toLowerCase().includes(settings.searchBy);
+    return (
+      student.firstName.toLowerCase().includes(settings.searchBy) ||
+      student.lastName.toLowerCase().includes(settings.searchBy)
+    );
   });
   return searchedStudents;
 }
@@ -173,19 +176,23 @@ function isHufflepuff(student) {
   }
 }
 
-function studentFilter(filteredList) {
+function isPrefect(student) {
+  return student.prefect;
+}
+
+function studentFilter(list) {
   //get filter depending on data-filter attribute
   //filter allStudents with correct filter function  and put it into filteredAnimals
   if (settings.filterBy === "gryffindor") {
-    filteredList = allStudents.filter(isGryffindor);
+    list = list.filter(isGryffindor);
   } else if (settings.filterBy === "slytherin") {
-    filteredList = allStudents.filter(isSlytherin);
+    list = list.filter(isSlytherin);
   } else if (settings.filterBy === "ravenclaw") {
-    filteredList = allStudents.filter(isRavenclaw);
+    list = list.filter(isRavenclaw);
   } else if (settings.filterBy === "hufflepuff") {
-    filteredList = allStudents.filter(isHufflepuff);
+    list = list.filter(isHufflepuff);
   }
-  return filteredList;
+  return list;
 }
 
 function selectSort(event) {
@@ -295,7 +302,7 @@ function getLastName(fullname) {
     let result = lastNameArray.join("");
     return result;
   } else if (!fullname.includes(" ")) {
-    let lastName = null;
+    let lastName = "";
     return lastName;
   } else {
     const cleanedLastName = cleanData(lastName);
@@ -348,9 +355,15 @@ function cleanData(data) {
 function buildList() {
   const searchList = searchFunction(allStudents);
   const currentList = studentFilter(searchList);
-  //const searchList = searchFunction(currentList);
   const sortedList = sortedStudents(currentList);
+
   displayList(sortedList);
+  //const searchList = searchFunction(currentList);
+
+  /*   const searchList = searchFunction(allStudents);
+  const currentList = studentFilter(searchList);
+  //const searchList = searchFunction(currentList);
+  const sortedList = sortedStudents(currentList); */
 }
 
 function displayList(student) {
@@ -376,6 +389,7 @@ function displayStudent(student) {
   clone
     .querySelector("#student_article")
     .addEventListener("click", () => showPopup(student));
+
   document.querySelector("#student_container").appendChild(clone);
 }
 
@@ -397,5 +411,74 @@ function showPopup(studentData) {
 
   function closePopup() {
     document.querySelector("#popup").style.display = "none";
+    popup
+      .querySelector("#toggle_prefect")
+      .removeEventListener("click", clickPrefect);
   }
+
+  //prefect
+
+  if (studentData.prefect === true) {
+    popup.querySelector("#prefect_img").src = "billeder/prefect_true.png";
+  } else {
+    popup.querySelector("#prefect_img").src = "billeder/prefect_false.png";
+  }
+
+  popup
+    .querySelector("#toggle_prefect")
+    .addEventListener("click", clickPrefect);
+
+  function clickPrefect() {
+    console.log("clicked");
+    if (studentData.prefect === true) {
+      studentData.prefect = false;
+    } else {
+      tryToMakePrefect(studentData);
+    }
+
+    if (studentData.prefect === true) {
+      popup.querySelector("#prefect_img").src = "billeder/prefect_true.png";
+    } else {
+      popup.querySelector("#prefect_img").src = "billeder/prefect_false.png";
+    }
+
+    //showPopup(studentData);
+    //buildList();
+  }
+}
+
+function tryToMakePrefect(selectedStudent) {
+  let prefects = allStudents.filter((student) => student.prefect);
+  prefects = prefects.filter((student) => student.house);
+  const numberOfPrefects = prefects.length;
+
+  if (numberOfPrefects > 1) {
+    alert("fuck off bitch");
+    //removeAorB(prefects[0], prefects[1]);
+  } else {
+    selectedStudent.prefect = true;
+  }
+
+  /* function removeAorB(prefectA, prefectB) {
+    //ask user to ignore or remove a or b
+    document.querySelector("#remove_aorb").classList.remove("hide");
+    document.querySelector("#remove_aorb .closebutton").addEventListener("click", closeDialog);
+    document.querySelector("#remove_aorb #removea").addEventListener("click", clickRemoveA);
+    document.querySelector("#remove_aorb #removeb").addEventListener("click", clickRemoveB);
+
+//show names on buttons
+ document.querySelector("#remove_aorb [data-field=winnerA]").textContent = prefectA.name;
+  document.querySelector("#remove_aorb [data-field=winnerB]").textContent = prefectB.name;
+
+
+    //if ignore do nothing
+ function closeDialog() {
+  document.querySelector("#remove_aorb").classList.add("hide");
+    document.querySelector("#remove_aorb .closebutton").removeEventListener("click", closeDialog);
+    document.querySelector("#remove_aorb #removea").removeEventListener("click", clickRemoveA);
+    document.querySelector("#remove_aorb #removeb").removeEventListener("click", clickRemoveB);
+ }
+
+
+} */
 }
