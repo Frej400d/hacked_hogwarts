@@ -11,6 +11,7 @@ const Student = {
   profilePic: "",
   house: "",
   expelled: false,
+  prefect: false,
 };
 
 //empty array for students
@@ -111,6 +112,7 @@ function prepareStudents(stud) {
   student.house = getHouse(stud.house.trim());
   student.img = getStudentImg(stud.fullname.trim());
   student.expelled = false;
+  student.prefect = false;
 
   return student;
   //allStudents.push(student);

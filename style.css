@@ -24,8 +24,7 @@ h2 {
   color: #050c26;
   font-family: magicSchool2;
   font-size: 2em;
-  margin: 0;
-  margin-left: 1em;
+  text-align: center;
 }
 
 header {
@@ -133,6 +132,18 @@ img.filter:hover {
   border-radius: 20px;
   box-shadow: 0px 0px 5px 5px #ffb72d;
 }
+/* expelled*/
+#status_container {
+  display: flex;
+}
+
+#status_containerh2 {
+  margin-left: 1em;
+  margin-right: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+/*sort layout*/
 
 #sort_and_search {
   display: grid;
@@ -142,6 +153,13 @@ img.filter:hover {
 /*sorting buttons border: 1px solid #050c26;*/
 #sorting {
   display: flex;
+}
+
+#sorting h2 {
+  margin-left: 1em;
+  margin-right: 0;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .sort {
