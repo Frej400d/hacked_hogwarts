@@ -69,7 +69,16 @@
             </ul>
           </nav>
         </div>
-        <div id="status_container"></div>
+        <div id="status_container">
+          <h2>Expelled Students:</h2>
+          <img
+            class="filter"
+            data-action="filter"
+            data-filter="expelled"
+            src="billeder/expelled_true.png"
+            alt="All"
+          />
+        </div>
       </div>
 
       <div id="sort_and_search">
@@ -154,15 +163,16 @@
 
     <template id="student">
       <article id="student_article">
-        <div class="fullname">
-          <h3 class="firstname"></h3>
-          <h3 class="lastname"></h3>
+        <div id="upper_article">
+          <div class="fullname">
+            <h3 class="firstname"></h3>
+            <h3 class="lastname"></h3>
+          </div>
+          <img class="student_img" src="" alt="" />
         </div>
-        <img class="student_img" src="" alt="" />
         <div class="descrip">
-          <p class="house"></p>
-          <p class="gender"></p>
-          <p class="bloodstatus"></p>
+          <img class="house" src="" alt="" />
+          <button class="expel_button">Expel</button>
         </div>
       </article>
     </template>

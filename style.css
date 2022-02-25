@@ -8,6 +8,10 @@
   src: url(fonts/MagicSchoolTwo.ttf);
 }
 
+.hidden {
+  display: none;
+}
+
 h1 {
   text-align: center;
   font-family: magicSchool2;
