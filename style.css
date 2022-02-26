@@ -74,7 +74,7 @@ article#student_article {
 
 article .fullname {
   font-family: "Lobster", cursive;
-  font-size: 1.5em;
+  font-size: 1.4em;
   display: flex;
   justify-content: center;
 }
@@ -83,14 +83,48 @@ article .lastname {
   margin-left: 0.4em;
 }
 
+#image_wrapper {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
 .student_img {
+  grid-column: 2/3;
   min-height: 150px;
-  justify-self: center;
+}
+
+.prefect_badge {
+  max-height: 3.5em;
+  position: relative;
+  right: 2em;
+}
+
+.article_line {
+  color: #050c26;
+  border: 1px solid #050c26;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-top: 1em;
 }
 
 .descrip {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.expel_button {
+  background-color: white;
+  border: 2px solid #050c26;
+  border-radius: 5px;
+  font-family: "Lobster", cursive;
+  font-size: 1.5em;
+  cursor: pointer;
+}
+
+.expel_button:hover {
+  background-color: #400913;
 }
 
 /*filter layout*/
@@ -119,7 +153,7 @@ article .lastname {
 img.filter {
   max-height: 6em;
   margin-left: 1em;
-  margin-right: 1.5em;
+  margin-right: 1em;
   padding: 5px;
 }
 
@@ -134,6 +168,7 @@ img.filter:hover {
 }
 /* expelled*/
 #status_container {
+  margin-top: 1em;
   display: flex;
 }
 
@@ -143,6 +178,11 @@ img.filter:hover {
   margin-top: auto;
   margin-bottom: auto;
 }
+
+#status_container img.filter {
+  margin-right: 0;
+}
+
 /*sort layout*/
 
 #sort_and_search {
@@ -218,6 +258,7 @@ img.filter:hover {
 
 /*pop up padding: 2px 14px 2px 0px;*/
 #popup {
+  z-index: 1;
   width: 100vw;
   height: 100vw;
   background-color: #00000099;
@@ -266,6 +307,42 @@ img.filter:hover {
 
 #prefect_img {
   max-height: 6em;
+}
+
+/*pop up warning removeother*/
+
+.hide {
+  visibility: hidden;
+}
+
+.modal {
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.warning {
+  box-shadow: 1px 1px 10px #333;
+  border-radius: 12px;
+  padding: 2em;
+  background-color: white;
+  position: relative;
+}
+
+button.close_removeother {
+  position: absolute;
+  right: -1em;
+  top: -1em;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
 }
 
 /*animationer*/

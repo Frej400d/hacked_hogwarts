@@ -104,6 +104,7 @@ function prepareObjects(hogwartsData) {
 function prepareStudents(stud) {
   const student = Object.create(Student);
 
+  /*   student.fullName = getFullName(stud.fullname.trim()); */
   student.firstName = getFirstName(stud.fullname.trim());
   student.middleName = getMiddleName(stud.fullname.trim());
   student.nickName = getNickname(stud.fullname.trim());
@@ -212,7 +213,8 @@ function studentFilter(list) {
       list = list.filter(isRavenclaw);
     } else if (settings.filterBy === "hufflepuff") {
       list = list.filter(isHufflepuff);
-    } else if (settings.filterBy === "expelled") {
+    } else if (settings.filterBy === "prefect") {
+      list = list.filter(isPrefect);
     }
   }
   return list;
@@ -270,6 +272,11 @@ function sortedStudents(sortedList) {
   return sortedList;
 }
 
+/* function getFullName(fullname) {
+  let cleanFullName = cleanData(fullname);
+  return cleanFullName;
+}
+ */
 function getFirstName(fullname) {
   if (fullname.includes(" ")) {
     let firstName = fullname.slice(0, fullname.indexOf(" "));
@@ -422,6 +429,13 @@ function displayStudent(student) {
     .querySelector(".expel_button")
     .addEventListener("click", () => expelStudent(student));
 
+  //show prefect badge
+  if (student.prefect === true) {
+    clone.querySelector(".prefect_badge").src = "billeder/prefect_true.png";
+  } else {
+    clone.querySelector(".prefect_badge").src = "";
+  }
+
   document.querySelector("#student_container").appendChild(clone);
 }
 
@@ -464,9 +478,11 @@ function showPopup(studentData) {
     console.log("clicked");
     if (studentData.prefect === true) {
       studentData.prefect = false;
+      console.log("make him false");
     } else {
       tryToMakePrefect(studentData);
     }
+    buildList();
 
     if (studentData.prefect === true) {
       popup.querySelector("#prefect_img").src = "billeder/prefect_true.png";
@@ -477,40 +493,80 @@ function showPopup(studentData) {
     //showPopup(studentData);
     //buildList();
   }
-}
 
-function tryToMakePrefect(selectedStudent) {
-  //find all prefects in our students
-  let prefects = allStudents.filter((student) => student.prefect);
-  prefects = prefects.filter((student) => student.house);
-  const numberOfPrefects = prefects.length;
+  function tryToMakePrefect(selectedStudent) {
+    //array for prefects
+    const prefects = [];
+    //find prefects and add to array
+    allStudents.filter((student) => {
+      if (student.house === selectedStudent.house && student.prefect === true) {
+        prefects.push(student);
+      }
+    });
 
-  if (numberOfPrefects > 1) {
-    alert("fuck off bitch");
-    //removeAorB(prefects[0], prefects[1]);
-  } else {
-    selectedStudent.prefect = true;
+    //new array for prefect gender
+    const otherPrefectGender = [];
+    //filter for gender and add
+    prefects.filter((student) => {
+      if (student.gender === selectedStudent.gender) {
+        otherPrefectGender.push(student);
+      }
+    });
+    //if theres more than 1 of the same gender in the same house get option to remove
+    if (otherPrefectGender.length >= 1) {
+      console.log("There is already a prefect of this house and this gender");
+      removeOther(otherPrefectGender[0]);
+    } else {
+      makePrefect(selectedStudent);
+    }
+
+    //ask user to ignore or remove other
+    function removeOther(otherPrefect) {
+      //show warning popup removeother
+      document.querySelector("#warning_remove_other").classList.remove("hide");
+      //add listener to close button
+      document
+        .querySelector("#warning_remove_other .close_removeother")
+        .addEventListener("click", closeWarningOther);
+      //add listener to remove other prefect
+      document
+        .querySelector("#warning_remove_other #removeotherbutton")
+        .addEventListener("click", clickRemoveOther);
+
+      //show name of current prefect
+      document.querySelector(
+        "#warning_remove_other [data-field=otherprefect]"
+      ).textContent = otherPrefect.firstName + " " + otherPrefect.lastName;
+
+      //if ignore do nothing
+      function closeWarningOther() {
+        //close warning and remove eventlistener
+        document.querySelector("#warning_remove_other").classList.add("hide");
+        document
+          .querySelector("#warning_remove_other #removeotherbutton")
+          .removeEventListener("click", clickRemoveOther);
+        document
+          .querySelector("#warning_remove_other #removeotherbutton")
+          .removeEventListener("click", clickRemoveOther);
+      }
+      //remove the other prefect
+      function clickRemoveOther() {
+        console.log(selectedStudent);
+        removePrefect(otherPrefect);
+        makePrefect(selectedStudent);
+        closePopup();
+        showPopup(selectedStudent);
+        buildList();
+        closeWarningOther();
+      }
+    }
+
+    function removePrefect(student) {
+      student.prefect = false;
+    }
+
+    function makePrefect(student) {
+      student.prefect = true;
+    }
   }
-
-  /*
-   const prefects = allStudents.filter((student) => student.prefect);   
-  const numberOfPrefects = prefects.length;
-  const other = prefects
-    .filter((student) => student.prefect === selectedStudent.prefect)
-    .shift(); */
 }
-
-/* //working kinda
-function tryToMakePrefect(selectedStudent) {
-  let prefects = allStudents.filter((student) => student.prefect);
-  prefects = prefects.filter((student) => student.house);
-  const numberOfPrefects = prefects.length;
-
-  if (numberOfPrefects > 1) {
-    alert("fuck off bitch");
-    //removeAorB(prefects[0], prefects[1]);
-  } else {
-    selectedStudent.prefect = true;
-  }
-}
- */
