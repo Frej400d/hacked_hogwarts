@@ -483,7 +483,7 @@ function tryToMakePrefect(selectedStudent) {
   //find all prefects in our students
   let prefects = allStudents.filter((student) => student.prefect);
   prefects = prefects.filter((student) => student.house);
-  const numberOfPrefects = housePrefects.length;
+  const numberOfPrefects = prefects.length;
 
   if (numberOfPrefects > 1) {
     alert("fuck off bitch");
