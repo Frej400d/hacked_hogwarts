@@ -62,12 +62,11 @@ hr {
   margin-right: 1em;
 }
 /*student article*/
-article#student_article {
+article.student_article {
   border: 2px solid #050c26;
   border-radius: 25px;
   padding: 10px;
   margin: 1em;
-  background-color: #ffffff;
   display: grid;
   justify-content: center;
 }
@@ -81,6 +80,12 @@ article .fullname {
 
 article .lastname {
   margin-left: 0.4em;
+}
+
+article h3 {
+  margin-top: 0.5em;
+  /* text-shadow: -1px -1px 0 #050c26, 1px -1px 0 #050c26, -1px 1px 0 #050c26,
+    1px 1px 0 #050c26; */
 }
 
 #image_wrapper {
@@ -119,12 +124,32 @@ article .lastname {
   border: 2px solid #050c26;
   border-radius: 5px;
   font-family: "Lobster", cursive;
-  font-size: 1.5em;
+  font-size: 1.3em;
   cursor: pointer;
 }
 
 .expel_button:hover {
-  background-color: #400913;
+  color: #ffb72d;
+  background-color: #e50505;
+}
+
+.article_house {
+  max-height: 3em;
+}
+/*colors for names in articles based on houses*/
+.text_color_gryf {
+  color: #5d0400;
+}
+
+.text_color_slyth {
+  color: #003407;
+}
+.text_color_raven {
+  color: #0e1a40;
+}
+
+.text_color_huffle {
+  color: #bf8106;
 }
 
 /*filter layout*/
@@ -270,14 +295,19 @@ img.filter:hover {
 
 #popupinfo {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 3fr;
+  grid-template-columns: 1fr 2fr;
   margin-top: 10em;
-  text-align: center;
-  width: 40vw;
+
+  width: 50vw;
   margin-inline: auto;
-  border: 3px solid #400913;
+  border: 5px solid #ffb72d;
+  border-radius: 10px;
   background-color: #ffffff;
+}
+
+.popup_left {
+  text-align: center;
+  border-right: 3px dashed #ffb72d;
 }
 
 .popup_fullname {
@@ -292,21 +322,115 @@ img.filter:hover {
   margin-left: 0.3em;
 }
 
+.popup_fullname h3 {
+  font-family: "Lobster", cursive;
+  font-size: 1.7em;
+  margin-bottom: 0.5em;
+}
+
 .popup_studentimg {
   grid-row: 2;
   min-height: 150px;
   justify-self: center;
 }
 
+.popup_textinfo {
+  display: grid;
+  justify-content: center;
+}
+
+.popup_left p {
+  color: #050c26;
+  font-family: "Lobster Two", cursive;
+  font-size: 1.4em;
+  text-align: left;
+}
+
+p.popup_gender {
+  margin-bottom: 0;
+}
+
+p.popup_bloodtype {
+  margin-top: 0.5em;
+}
+
+.popup_right {
+  display: grid;
+}
+
+.popup_right p {
+  color: #050c26;
+  font-family: "Lobster Two", cursive;
+  font-size: 1.4em;
+  margin-left: 1em;
+  margin-bottom: 0%;
+}
+
+.popup_closebutton {
+  margin: 0.2em;
+  display: grid;
+}
+
 #close_popup {
-  grid-column: 3/4;
-  min-width: 3em;
+  font-family: "Qwitcher Grypen", cursive;
+  color: #050c26;
+  font-size: 2em;
+  background-color: white;
+  border: 2px solid #ffb72d;
+
+  border-radius: 5px;
+  min-width: 2em;
   max-height: 3em;
   justify-self: end;
+  cursor: pointer;
+}
+
+#close_popup:hover {
+  background-color: #e50505;
+}
+
+.status_wrapper {
+  display: flex;
+  justify-content: space-around;
 }
 
 #prefect_img {
   max-height: 6em;
+}
+
+.popup_makebuttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 1.5em;
+  gap: 2em;
+}
+
+#toggle_prefect {
+  color: #050c26;
+  background-color: white;
+  border: 2px solid #ffb72d;
+  border-radius: 5px;
+  font-family: "Qwitcher Grypen", cursive;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+#toggle_prefect:hover {
+  scale: 1.1;
+}
+
+#toggle_inquis {
+  color: #050c26;
+  background-color: white;
+  border: 2px solid #ffb72d;
+  border-radius: 5px;
+  font-family: "Qwitcher Grypen", cursive;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+#toggle_inquis:hover {
+  scale: 1.1;
 }
 
 /*pop up warning removeother*/

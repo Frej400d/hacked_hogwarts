@@ -16,6 +16,11 @@
       href="https://fonts.googleapis.com/css2?family=Lobster&display=swap"
       rel="stylesheet"
     />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap"
+      rel="stylesheet"
+    />
   </head>
 
   <body>
@@ -161,30 +166,45 @@
     <!-- Popup: Student details -->
     <section id="popup">
       <article id="popupinfo">
-        <div class="popup_fullname">
-          <h3 class="popup_firstname"></h3>
-          <h3 class="popup_middlename"></h3>
-          <h3 class="popup_nickname"></h3>
-          <h3 class="popup_lastname"></h3>
+        <div class="popup_left">
+          <div class="popup_fullname">
+            <h3 class="popup_firstname"></h3>
+            <h3 class="popup_middlename"></h3>
+            <h3 class="popup_nickname"></h3>
+            <h3 class="popup_lastname"></h3>
+          </div>
+          <img class="popup_studentimg" src="" alt="" />
+          <div class="popup_textinfo">
+            <p class="popup_gender">Gender:</p>
+            <p class="popup_bloodtype">Blood type:</p>
+          </div>
         </div>
-        <img class="popup_studentimg" src="" alt="" />
-        <button id="close_popup">X</button>
 
-        <p class="popup_gender"></p>
-        <p class="house"></p>
-
-        <img
-          id="prefect_img"
-          src="/billeder/prefect_false.png"
-          alt="prefectbadge"
-        />
-
-        <button id="toggle_prefect">Toggle Prefect</button>
+        <div class="popup_right">
+          <div class="popup_closebutton">
+            <button id="close_popup">X</button>
+          </div>
+          <p>Status:</p>
+          <div class="status_wrapper">
+            <img class="popup_house" src="" alt="house badge" />
+            <img class="popup_expelled" src="" alt="expelled badge" />
+            <img
+              id="prefect_img"
+              src="/billeder/prefect_false.png"
+              alt="prefect badge"
+            />
+            <img class="popup_inquis" src="" alt="inquisitorial badge" />
+          </div>
+          <div class="popup_makebuttons">
+            <button id="toggle_prefect">Toggle Prefect</button>
+            <button id="toggle_inquis">Toggle Inquisitor</button>
+          </div>
+        </div>
       </article>
     </section>
 
     <template id="student">
-      <article id="student_article">
+      <article class="student_article">
         <div id="upper_article">
           <div class="fullname">
             <h3 class="firstname"></h3>
@@ -197,7 +217,7 @@
         </div>
         <hr class="article_line" />
         <div class="descrip">
-          <img class="house" src="" alt="" />
+          <img class="article_house" src="" alt="" />
           <button class="expel_button">EXPEL</button>
         </div>
       </article>

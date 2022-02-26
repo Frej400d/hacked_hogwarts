@@ -413,28 +413,45 @@ function displayStudent(student) {
   clone.querySelector(".firstname").textContent = student.firstName;
   clone.querySelector(".lastname").textContent = student.lastName;
   clone.querySelector("img.student_img").src = student.img;
-  clone.querySelector(".house").textContent = student.house;
+  //clone.querySelector(".house").textContent = student.house;
 
-  //popup button
-  clone
-    .querySelector("#upper_article")
-    .addEventListener("click", () => showPopup(student));
-
-  //expel button
-  if (student.expelled === true) {
-    clone.querySelector(".expel_button").classList.add("hidden");
-  }
-
-  clone
-    .querySelector(".expel_button")
-    .addEventListener("click", () => expelStudent(student));
-
-  //show prefect badge
+  //show prefect badge on article
   if (student.prefect === true) {
     clone.querySelector(".prefect_badge").src = "billeder/prefect_true.png";
   } else {
     clone.querySelector(".prefect_badge").src = "";
   }
+  //popup button
+  clone
+    .querySelector("#upper_article")
+    .addEventListener("click", () => showPopup(student));
+
+  //showhouse but as image and also different color name for each house
+  if (student.house === "Gryffindor") {
+    (clone.querySelector(".article_house").src = "billeder/gryffindor_1.png"),
+      clone.querySelector(".fullname").classList.add("text_color_gryf");
+  } else if (student.house === "Slytherin") {
+    (clone.querySelector(".article_house").src = "billeder/slytherin.png"),
+      clone.querySelector(".fullname").classList.add("text_color_slyth");
+  } else if (student.house === "Ravenclaw") {
+    (clone.querySelector(".article_house").src = "billeder/ravenclaw.png"),
+      clone.querySelector(".fullname").classList.add("text_color_raven");
+  } else if (student.house === "Hufflepuff") {
+    (clone.querySelector(".article_house").src = "billeder/hufflepuff.png"),
+      clone.querySelector(".fullname").classList.add("text_color_huffle");
+  }
+
+  //if student is expelled: hide expel button + remove as prefect + remove prefect badge
+  if (student.expelled === true) {
+    clone.querySelector(".expel_button").classList.add("hidden"),
+      (student.prefect = false),
+      (clone.querySelector(".prefect_badge").src = "");
+  }
+
+  //expel button
+  clone
+    .querySelector(".expel_button")
+    .addEventListener("click", () => expelStudent(student));
 
   document.querySelector("#student_container").appendChild(clone);
 }
@@ -448,12 +465,17 @@ function showPopup(studentData) {
   popup.querySelector(".popup_middlename").textContent = studentData.middleName;
   popup.querySelector(".popup_nickname").textContent = studentData.nickName;
   popup.querySelector(".popup_lastname").textContent = studentData.lastName;
-  popup.querySelector(".popup_gender").textContent = studentData.gender;
-  popup.querySelector(".house").textContent = studentData.house;
+  popup.querySelector(".popup_gender").textContent =
+    "Gender: " + studentData.gender;
+  //FOR BLOODTYPE
+  //popup.querySelector(".popup_bloodtype").textContent ="Blood Type: " + studentData.bloodtype;
+
   console.log(studentData);
 
   //make close button
-  document.querySelector("#close_popup").addEventListener("click", closePopup);
+  document
+    .querySelector(".popup_closebutton #close_popup")
+    .addEventListener("click", closePopup);
 
   function closePopup() {
     document.querySelector("#popup").style.display = "none";
@@ -462,14 +484,14 @@ function showPopup(studentData) {
       .removeEventListener("click", clickPrefect);
   }
 
-  //prefect
-
+  //set prefect image on load up of popup
   if (studentData.prefect === true) {
     popup.querySelector("#prefect_img").src = "billeder/prefect_true.png";
   } else {
     popup.querySelector("#prefect_img").src = "billeder/prefect_false.png";
   }
 
+  //listen to click on toggle prefect
   popup
     .querySelector("#toggle_prefect")
     .addEventListener("click", clickPrefect);
@@ -478,12 +500,12 @@ function showPopup(studentData) {
     console.log("clicked");
     if (studentData.prefect === true) {
       studentData.prefect = false;
-      console.log("make him false");
     } else {
       tryToMakePrefect(studentData);
     }
     buildList();
 
+    //after the click check if prefect status and change image according to that
     if (studentData.prefect === true) {
       popup.querySelector("#prefect_img").src = "billeder/prefect_true.png";
     } else {
