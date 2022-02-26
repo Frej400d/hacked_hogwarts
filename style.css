@@ -286,11 +286,18 @@ img.filter:hover {
   z-index: 1;
   width: 100vw;
   height: 100vw;
-  background-color: #00000099;
   position: fixed;
   top: 0;
   display: none;
   justify-content: center;
+}
+
+.popup_bg_color {
+  z-index: 1;
+  width: 100vw;
+  height: 100vw;
+  position: fixed;
+  top: 0;
 }
 
 #popupinfo {
@@ -398,6 +405,10 @@ p.popup_bloodtype {
   max-height: 6em;
 }
 
+.popup_house {
+  max-height: 6em;
+}
+
 .popup_makebuttons {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -431,6 +442,24 @@ p.popup_bloodtype {
 
 #toggle_inquis:hover {
   scale: 1.1;
+}
+
+/*popup baggrundsfarve*/
+
+.bg_color_gryf {
+  background-color: #5d0500af;
+}
+
+.bg_color_slyth {
+  background-color: #003407a8;
+}
+
+.bg_color_raven {
+  background-color: #0e1a40bb;
+}
+
+.bg_color_huffle {
+  background-color: #bf8106b0;
 }
 
 /*pop up warning removeother*/

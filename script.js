@@ -479,9 +479,51 @@ function showPopup(studentData) {
 
   function closePopup() {
     document.querySelector("#popup").style.display = "none";
+
+    //fjern listener fra prefect button
     popup
       .querySelector("#toggle_prefect")
       .removeEventListener("click", clickPrefect);
+    //remove all classes and img that are house based
+    popup.querySelector(".popup_house").src = "";
+    popup.querySelector(".popup_fullname").classList.remove("text_color_gryf");
+    popup.querySelector(".popup_bg_color").classList.remove("bg_color_gryf");
+    popup.querySelector(".popup_fullname").classList.remove("text_color_slyth");
+    popup.querySelector(".popup_bg_color").classList.remove("bg_color_slyth");
+    popup.querySelector(".popup_fullname").classList.remove("text_color_raven"),
+      popup.querySelector(".popup_bg_color").classList.remove("bg_color_raven");
+    popup
+      .querySelector(".popup_fullname")
+      .classList.remove("text_color_huffle"),
+      popup
+        .querySelector(".popup_bg_color")
+        .classList.remove("bg_color_huffle");
+  }
+
+  //remove buttons on expelled studens
+  if (studentData.expelled === true) {
+    popup.querySelector(".popup_makebuttons").classList.add("hide");
+  } else {
+    popup.querySelector(".popup_makebuttons").classList.remove("hide");
+  }
+
+  //showhouse: image, name color and bg color
+  if (studentData.house === "Gryffindor") {
+    (popup.querySelector(".popup_house").src = "billeder/gryffindor_1.png"),
+      popup.querySelector(".popup_fullname").classList.add("text_color_gryf");
+    popup.querySelector(".popup_bg_color").classList.add("bg_color_gryf");
+  } else if (studentData.house === "Slytherin") {
+    (popup.querySelector(".popup_house").src = "billeder/slytherin.png"),
+      popup.querySelector(".popup_fullname").classList.add("text_color_slyth"),
+      popup.querySelector(".popup_bg_color").classList.add("bg_color_slyth");
+  } else if (studentData.house === "Ravenclaw") {
+    (popup.querySelector(".popup_house").src = "billeder/ravenclaw.png"),
+      popup.querySelector(".popup_fullname").classList.add("text_color_raven"),
+      popup.querySelector(".popup_bg_color").classList.add("bg_color_raven");
+  } else if (studentData.house === "Hufflepuff") {
+    (popup.querySelector(".popup_house").src = "billeder/hufflepuff.png"),
+      popup.querySelector(".popup_fullname").classList.add("text_color_huffle"),
+      popup.querySelector(".popup_bg_color").classList.add("bg_color_huffle");
   }
 
   //set prefect image on load up of popup
@@ -535,6 +577,7 @@ function showPopup(studentData) {
       }
     });
     //if theres more than 1 of the same gender in the same house get option to remove
+
     if (otherPrefectGender.length >= 1) {
       console.log("There is already a prefect of this house and this gender");
       removeOther(otherPrefectGender[0]);
