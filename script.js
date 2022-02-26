@@ -480,6 +480,28 @@ function showPopup(studentData) {
 }
 
 function tryToMakePrefect(selectedStudent) {
+  //find all prefects in our students
+  let prefects = allStudents.filter((student) => student.prefect);
+  prefects = prefects.filter((student) => student.house);
+  const numberOfPrefects = housePrefects.length;
+
+  if (numberOfPrefects > 1) {
+    alert("fuck off bitch");
+    //removeAorB(prefects[0], prefects[1]);
+  } else {
+    selectedStudent.prefect = true;
+  }
+
+  /*
+   const prefects = allStudents.filter((student) => student.prefect);   
+  const numberOfPrefects = prefects.length;
+  const other = prefects
+    .filter((student) => student.prefect === selectedStudent.prefect)
+    .shift(); */
+}
+
+/* //working kinda
+function tryToMakePrefect(selectedStudent) {
   let prefects = allStudents.filter((student) => student.prefect);
   prefects = prefects.filter((student) => student.house);
   const numberOfPrefects = prefects.length;
@@ -491,26 +513,4 @@ function tryToMakePrefect(selectedStudent) {
     selectedStudent.prefect = true;
   }
 }
-
-/* function removeAorB(prefectA, prefectB) {
-    //ask user to ignore or remove a or b
-    document.querySelector("#remove_aorb").classList.remove("hide");
-    document.querySelector("#remove_aorb .closebutton").addEventListener("click", closeDialog);
-    document.querySelector("#remove_aorb #removea").addEventListener("click", clickRemoveA);
-    document.querySelector("#remove_aorb #removeb").addEventListener("click", clickRemoveB);
-
-//show names on buttons
- document.querySelector("#remove_aorb [data-field=winnerA]").textContent = prefectA.name;
-  document.querySelector("#remove_aorb [data-field=winnerB]").textContent = prefectB.name;
-
-
-    //if ignore do nothing
- function closeDialog() {
-  document.querySelector("#remove_aorb").classList.add("hide");
-    document.querySelector("#remove_aorb .closebutton").removeEventListener("click", closeDialog);
-    document.querySelector("#remove_aorb #removea").removeEventListener("click", clickRemoveA);
-    document.querySelector("#remove_aorb #removeb").removeEventListener("click", clickRemoveB);
- }
-
-
-} */
+ */
