@@ -526,6 +526,12 @@ function showPopup(studentData) {
       popup.querySelector(".popup_bg_color").classList.add("bg_color_huffle");
   }
 
+  //set expelled image on load up
+  if (studentData.expelled === false) {
+    popup.querySelector(".popup_expelled").src = "billeder/expelled_false.png";
+  } else {
+    popup.querySelector(".popup_expelled").src = "billeder/expelled_true.png";
+  }
   //set prefect image on load up of popup
   if (studentData.prefect === true) {
     popup.querySelector("#prefect_img").src = "billeder/prefect_true.png";

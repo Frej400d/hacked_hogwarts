@@ -67,8 +67,7 @@ article.student_article {
   border-radius: 25px;
   padding: 10px;
   margin: 1em;
-  display: grid;
-  justify-content: center;
+  text-align: center;
 }
 
 article .fullname {
@@ -153,18 +152,6 @@ article h3 {
 }
 
 /*filter layout*/
-#filter_sort_search_container {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-}
-
-#filter_container {
-  display: flex;
-}
-
-#filter_container ul {
-  padding: 0;
-}
 
 #filter_container h2 {
   margin-left: 1em;
@@ -194,7 +181,7 @@ img.filter:hover {
 /* expelled*/
 #status_container {
   margin-top: 1em;
-  display: flex;
+  text-align: center;
 }
 
 #status_containerh2 {
@@ -208,16 +195,10 @@ img.filter:hover {
   margin-right: 0;
 }
 
-/*sort layout*/
-
-#sort_and_search {
-  display: grid;
-  grid-template-columns: 5fr 1fr 3fr;
-}
-
 /*sorting buttons border: 1px solid #050c26;*/
+
 #sorting {
-  display: flex;
+  text-align: center;
 }
 
 #sorting h2 {
@@ -231,7 +212,7 @@ img.filter:hover {
   font-family: "Qwitcher Grypen", cursive;
   font-size: 2em;
   background-color: white;
-  margin-right: 1em;
+  margin-right: 0;
   margin-left: 1em;
   margin-bottom: 0;
   margin-top: 0;
@@ -241,24 +222,9 @@ img.filter:hover {
   cursor: pointer;
 }
 
-.sort_wrapper {
-  display: flex;
-}
-
-.arrow {
-  display: flex;
-}
-
-.arrows {
-  max-height: 1em;
-  min-height: 2em;
-  margin: auto;
-}
-
 /*search bar*/
 #search_container {
   margin-right: 2em;
-  grid-column: 3/4;
   display: flex;
 }
 
@@ -288,6 +254,7 @@ img.filter:hover {
   height: 100vw;
   position: fixed;
   top: 0;
+  left: 0;
   display: none;
   justify-content: center;
 }
@@ -301,11 +268,7 @@ img.filter:hover {
 }
 
 #popupinfo {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  margin-top: 10em;
-
-  width: 50vw;
+  margin-top: 5em;
   margin-inline: auto;
   border: 5px solid #ffb72d;
   border-radius: 10px;
@@ -314,7 +277,6 @@ img.filter:hover {
 
 .popup_left {
   text-align: center;
-  border-right: 3px dashed #ffb72d;
 }
 
 .popup_fullname {
@@ -361,16 +323,22 @@ p.popup_bloodtype {
   margin-top: 0.5em;
 }
 
-.popup_right {
-  display: grid;
-}
-
 .popup_right p {
   color: #050c26;
   font-family: "Lobster Two", cursive;
   font-size: 1.4em;
-  margin-left: 1em;
   margin-bottom: 0%;
+  margin-top: 0%;
+  text-align: center;
+}
+.status_wrapper {
+  text-align: center;
+  margin: 1em;
+}
+
+.popup_makebuttons {
+  text-align: center;
+  margin: 1em;
 }
 
 .popup_closebutton {
@@ -384,21 +352,16 @@ p.popup_bloodtype {
   font-size: 2em;
   background-color: white;
   border: 2px solid #ffb72d;
-
   border-radius: 5px;
   min-width: 2em;
   max-height: 3em;
   justify-self: end;
   cursor: pointer;
+  margin-top: -10em;
 }
 
 #close_popup:hover {
-  background-color: #e50505;
-}
-
-.status_wrapper {
-  display: flex;
-  justify-content: space-around;
+  background-color: #ffb72d;
 }
 
 #prefect_img {
@@ -409,11 +372,11 @@ p.popup_bloodtype {
   max-height: 6em;
 }
 
-.popup_makebuttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin: 1.5em;
-  gap: 2em;
+.popup_expelled {
+  max-height: 6em;
+}
+.popup_inquis {
+  max-height: 6em;
 }
 
 #toggle_prefect {
@@ -475,27 +438,71 @@ p.popup_bloodtype {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.801);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .warning {
-  box-shadow: 1px 1px 10px #333;
-  border-radius: 12px;
-  padding: 2em;
+  display: grid;
+  border: 5px solid #ffb72d;
+  border-radius: 10px;
+  background-color: #ffffff;
+  padding: auto;
   background-color: white;
-  position: relative;
+  margin-top: 0;
+}
+
+.warning h2 {
+  color: #ffb72d;
+  font-size: 5em;
+  margin: 0;
+}
+
+.warning p {
+  color: #050c26;
+  font-family: "Lobster Two", cursive;
+  font-size: 1.4em;
+  text-align: left;
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+button#removeotherbutton {
+  color: #050c26;
+  background-color: white;
+  border: 2px solid #ffb72d;
+  border-radius: 5px;
+  font-family: "Qwitcher Grypen", cursive;
+  font-size: 2em;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-bottom: 1em;
+  margin-top: 0;
+  cursor: pointer;
+}
+
+#removeotherbutton:hover {
+  scale: 1.1;
 }
 
 button.close_removeother {
-  position: absolute;
-  right: -1em;
-  top: -1em;
-  border-radius: 50%;
-  width: 2em;
-  height: 2em;
+  font-family: "Qwitcher Grypen", cursive;
+  color: #050c26;
+  font-size: 2em;
+  background-color: white;
+  border: 2px solid #ffb72d;
+  border-radius: 5px;
+  min-width: 1.5em;
+  max-height: 3em;
+  justify-self: end;
+  cursor: pointer;
+  margin: 0.2em;
+}
+
+.close_removeother:hover {
+  background-color: #ffb72d;
 }
 
 /*animationer*/
@@ -518,23 +525,113 @@ button.close_removeother {
 /* responsive styling*/
 
 @media (min-width: 780px) {
+  #filter_sort_search_container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  #filter_container {
+    display: flex;
+  }
+
+  #filter_container ul {
+    padding: 0;
+  }
+
+  #status_container {
+    margin-top: 1em;
+    display: flex;
+  }
+}
+@media (min-width: 900px) {
+  /*sort layout*/
+
+  #sort_and_search {
+    display: grid;
+    grid-template-columns: 5fr 1fr 3fr;
+  }
+
+  #sorting {
+    display: flex;
+  }
+  .sort_wrapper {
+    display: flex;
+  }
+
+  #search_container {
+    margin-right: 2em;
+    grid-column: 3/4;
+  }
+
+  .sort {
+    font-family: "Qwitcher Grypen", cursive;
+    font-size: 2em;
+    background-color: white;
+    margin-right: 1em;
+    margin-left: 1em;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 }
 
 @media (min-width: 1300px) {
+  #student_list {
+    margin-left: 5em;
+    margin-right: 5em;
+  }
+
+  #popupinfo {
+    margin-top: 10em;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 50vw;
+  }
+  .status_wrapper {
+    display: flex;
+    justify-content: space-around;
+  }
+  .popup_right {
+    display: grid;
+    text-align: center;
+  }
+
+  .popup_makebuttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 1.5em;
+    gap: 2em;
+  }
+
+  .popup_left {
+    border-right: 3px dashed #ffb72d;
+  }
+  .popup_right p {
+    margin-left: 1em;
+  }
+
+  article.student_article {
+    display: grid;
+    justify-content: center;
+  }
+
+  #close_popup {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1500px) {
   #student_list {
     margin-left: 10em;
     margin-right: 10em;
   }
 }
 
-@media (min-width: 1500px) {
-  header {
-    margin-left: 20em;
-    margin-right: 20em;
-  }
-
+@media (min-width: 1800px) {
   #student_list {
-    margin-left: 20em;
-    margin-right: 20em;
+    margin-left: 12em;
+    margin-right: 12em;
   }
 }

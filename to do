@@ -1,0 +1,48 @@
+
+
+! HUSK !
+
+
+lav interface
+lav forside interface responsiv
+
+
+----kan ikke laves før mandag----
+
+bloodstatus
+inquis 
+hacked
+
+
+! BUGS/BLOCKED !
+
+- if prefect is expelled then prefect is made false however you cannot 
+make new prefect without warning unless you first go visit the "expelled"
+filter.
+
+
+---- DONE ----
+lav popup responsive✔️
+lav warning responsive✔️
+lav forside header responsiv✔️
+lav forside student grid responsiv✔️
+implement expelled in popup✔️
+style warning✔️
+style based on house✔️
+popup style done✔️
+prefect i sorting✔️
+prefect ✔️
+expelled i filter✔️
+expelled ✔️
+filter chosen ✔️
+style student list✔️
+stylepop up✔️
+make popup✔️
+fix leanne✔️
+combine search ✔️
+search ✔️
+combine filter, sort✔️
+sort✔️
+filter✔️
+function display list✔️
+clean hogwarts✔️
