@@ -401,12 +401,6 @@ function getBloodStatus(student) {
   }
 }
 
-function getHalf() {
-  let half;
-  half = bloodStatus.half;
-  console.log("half", half);
-}
-
 function cleanData(data) {
   //capitalize
   const capFirstLetter = data.slice(0, 1).toUpperCase();
