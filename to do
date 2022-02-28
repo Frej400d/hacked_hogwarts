@@ -2,27 +2,24 @@
 
 ! HUSK !
 
+- inquis 
+- lav interface
+- lav forside interface responsiv
 
-lav interface
-lav forside interface responsiv
+- lav symbol til sorting
 
-lav symbol til sorting
 
-----kan ikke laves før mandag----
-
-bloodstatus
-inquis 
-hacked
+- hacked
 
 
 ! BUGS/BLOCKED !
-
 - if prefect is expelled then prefect is made false however you cannot 
 make new prefect without warning unless you first go visit the "expelled"
 filter.
 
 
 ---- DONE ----
+bloodstatus✔️
 lav popup responsive✔️
 lav warning responsive✔️
 lav forside header responsiv✔️
