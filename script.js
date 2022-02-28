@@ -18,7 +18,8 @@ const Student = {
 let allStudents = [];
 
 //url to json data
-const url = "https://petlatkea.dk/2021/hogwarts/students.json";
+const url1 = "https://petlatkea.dk/2021/hogwarts/students.json";
+const url2 = "https://petlatkea.dk/2021/hogwarts/families.json";
 
 //let hogwartsData;
 
@@ -88,15 +89,14 @@ function searchFunction(searchedStudents) {
 } */
 
 async function loadJSON() {
-  const jsonData = await fetch(url);
+  const jsonData = await fetch(url1);
   const hogwartsData = await jsonData.json();
   //show hogwarts data in a table in the console
   //console.table(hogwartsData);
-  //call createStudents function
-  prepareObjects(hogwartsData);
+  prepareData(hogwartsData);
 }
 
-function prepareObjects(hogwartsData) {
+function prepareData(hogwartsData) {
   allStudents = hogwartsData.map(prepareStudents);
   buildList();
 }
