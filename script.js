@@ -10,12 +10,15 @@ const Student = {
   gender: "",
   profilePic: "",
   house: "",
+  bloodStatus: "",
   expelled: false,
   prefect: false,
 };
 
 //empty array for students
 let allStudents = [];
+
+let bloodStatus;
 
 //url to json data
 const url1 = "https://petlatkea.dk/2021/hogwarts/students.json";
@@ -89,12 +92,25 @@ function searchFunction(searchedStudents) {
 } */
 
 async function loadJSON() {
-  const jsonData = await fetch(url1);
-  const hogwartsData = await jsonData.json();
+  const resp = await fetch(url1);
+  const hogwartsData = await resp.json();
   //show hogwarts data in a table in the console
   //console.table(hogwartsData);
+  //console.log("first json");
+  const respFamily = await fetch(url2);
+  bloodStatus = await respFamily.json();
   prepareData(hogwartsData);
+  //console.table(bloodStatus);
+  // loadJSON2(hogwartsData);
 }
+
+/* async function loadJSON2(hogwartsData) {
+  const jsonData = await fetch(url2);
+  const familiyData = await jsonData.json();
+  //show hogwarts data in a table in the console
+  //console.table(hogwartsData);
+  prepareData(hogwartsData, familiyData);
+} */
 
 function prepareData(hogwartsData) {
   allStudents = hogwartsData.map(prepareStudents);
@@ -114,7 +130,8 @@ function prepareStudents(stud) {
   student.img = getStudentImg(stud.fullname.trim());
   student.expelled = false;
   student.prefect = false;
-
+  console.log(student.lastName);
+  student.bloodStatus = getBloodStatus(student);
   return student;
   //allStudents.push(student);
 }
@@ -374,6 +391,22 @@ function getStudentImg(fullname) {
   }
 }
 
+function getBloodStatus(student) {
+  if (bloodStatus.half.includes(student.lastName)) {
+    return "Halfblood";
+  } else if (bloodStatus.pure.includes(student.lastName)) {
+    return "Pureblood";
+  } else {
+    return "Muggleborn";
+  }
+}
+
+function getHalf() {
+  let half;
+  half = bloodStatus.half;
+  console.log("half", half);
+}
+
 function cleanData(data) {
   //capitalize
   const capFirstLetter = data.slice(0, 1).toUpperCase();
@@ -467,8 +500,8 @@ function showPopup(studentData) {
   popup.querySelector(".popup_lastname").textContent = studentData.lastName;
   popup.querySelector(".popup_gender").textContent =
     "Gender: " + studentData.gender;
-  //FOR BLOODTYPE
-  //popup.querySelector(".popup_bloodtype").textContent ="Blood Type: " + studentData.bloodtype;
+  popup.querySelector(".popup_bloodstatus").textContent =
+    "Blood Status: " + studentData.bloodStatus;
 
   console.log(studentData);
 
