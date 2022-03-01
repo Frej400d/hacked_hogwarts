@@ -420,11 +420,12 @@ function cleanData(data) {
   return cleanData;
 }
 
+//function getInterfaceNumbers(){}
+
 function buildList() {
   const searchList = searchFunction(allStudents);
   const currentList = studentFilter(searchList);
   const sortedList = sortedStudents(currentList);
-
   displayList(sortedList);
   //const searchList = searchFunction(currentList);
 
@@ -439,6 +440,9 @@ function displayList(studentList) {
   document.querySelector("#student_container").innerHTML = "";
   // build a new list
   studentList.forEach(displayStudent);
+  //call numbers function
+  document.querySelector(".displayed_students [data-field=displayed_no]").textContent = `${studentList.length}`;
+  //getInterfaceNumbers();
 }
 
 function displayStudent(student) {

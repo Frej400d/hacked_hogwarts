@@ -25,10 +25,25 @@
 
   <body>
     <header>
-      <section id="heading">
+      <section id="interface">
+        <div class="heading">
         <h1>Hogwarts Student List</h1>
+      </div>
+      <div class="interface_numbers">
+        <h2>Total number of students: <span data-field="interface_no">1</span>
+        </h2>      
+        <h2>Expelled students: <span data-field="expelled_no">1</span>
+        </h2>
+        <h2>Gryffindor students: <span data-field="gryffindor_no">1</span>
+        </h2>
+        <h2>Slytherin students: <span data-field="slytherin_no">1</span>
+        </h2>
+        <h2>Ravenclaw students: <span data-field="ravenclaw_no">1</span>
+        </h2>
+        <h2>Hufflepuff students: <span data-field="hufflepuff_no">1</span>
+        </h2>
+      </div>
       </section>
-      <section id="interface"></section>
     </header>
 
     <section id="student_list">
@@ -152,7 +167,10 @@
           />
         </div>
       </div>
+      
       <hr />
+      <h2 class="displayed_students">Displayed students: <span data-field="displayed_no">1</span>
+      </h2>
       <!-- Container til alle vores students -->
       <div id="student_container"></div>
     </section>

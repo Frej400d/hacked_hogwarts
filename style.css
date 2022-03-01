@@ -15,7 +15,7 @@
 h1 {
   text-align: center;
   font-family: magicSchool2;
-  font-size: 7em;
+  font-size: 5em;
   color: #ffb72d;
   margin: 0;
 }
@@ -27,6 +27,13 @@ h2 {
   text-align: center;
 }
 
+h2.displayed_students {
+font-size: 2em;
+
+margin-top: 0;
+margin-bottom: 0;
+
+}
 header {
   margin: auto;
 }
@@ -43,8 +50,16 @@ hr {
   margin-top: 1em;
 }
 
-/*student list*/
+#interface {
+  background-color: white;
+  border: 6px solid #ffb72d;
+  margin-top: 3em;
+  border-radius: 5px;
+  margin-bottom: 3em;
+}
 
+
+/*student list*/
 #student_list {
   background-color: white;
   border: 6px solid #ffb72d;
@@ -575,13 +590,27 @@ button#close_cannot_be_inquis {
     margin-right: 1em;
     display: flex;
   }
+
+  h1 {
+    font-size: 5em;
+  }
+
+  .interface_numbers h2 {
+    margin: 0.5em;
+  }
+
+  .interface_numbers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
 }
 @media (min-width: 900px) {
   /*sort layout*/
 
   #sort_and_search {
     display: grid;
-    grid-template-columns: 5fr 1fr 3fr;
+    grid-template-columns: 5fr 1fr 5fr;
   }
 
   #sorting {
@@ -612,6 +641,11 @@ button#close_cannot_be_inquis {
 
 @media (min-width: 1300px) {
   #student_list {
+    margin-left: 5em;
+    margin-right: 5em;
+  }
+
+  #interface {
     margin-left: 5em;
     margin-right: 5em;
   }
@@ -660,10 +694,20 @@ button#close_cannot_be_inquis {
     margin-left: 10em;
     margin-right: 10em;
   }
+
+  #interface {
+    margin-left: 10em;
+    margin-right: 10em;
+  }
 }
 
 @media (min-width: 1800px) {
   #student_list {
+    margin-left: 12em;
+    margin-right: 12em;
+  }
+
+  #interface {
     margin-left: 12em;
     margin-right: 12em;
   }
