@@ -165,7 +165,7 @@ article h3 {
 img.filter {
   max-height: 6em;
   margin-left: 1em;
-  margin-right: 1em;
+
   padding: 5px;
 }
 
@@ -505,6 +505,38 @@ button.close_removeother {
   background-color: #ffb72d;
 }
 
+/*cannot be inquis warning*/
+.modal_2 {
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.801);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button#close_cannot_be_inquis {
+  color: #050c26;
+  background-color: white;
+  border: 2px solid #ffb72d;
+  border-radius: 5px;
+  font-family: "Qwitcher Grypen", cursive;
+  font-size: 2em;
+  margin-left: 5em;
+  margin-right: 5em;
+  margin-bottom: 1em;
+  margin-top: 0;
+  cursor: pointer;
+}
+.close_cannot_be_inquis:hover {
+  scale: 1.1;
+}
+
+
 /*animationer*/
 .rotate {
   -ms-transform: rotate(180deg); /* IE 9 */
@@ -540,6 +572,7 @@ button.close_removeother {
 
   #status_container {
     margin-top: 1em;
+    margin-right: 1em;
     display: flex;
   }
 }

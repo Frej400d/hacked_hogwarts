@@ -91,6 +91,13 @@
             src="billeder/prefect_true.png"
             alt="prefect"
           />
+          <img
+          class="filter"
+          data-action="filter"
+          data-filter="inquisitor"
+          src="billeder/inquisitorial.png"
+          alt="insqisitor badge"
+        />
         </div>
       </div>
 
@@ -163,6 +170,20 @@
           Remove <span data-field="otherprefect">other</span>
         </button>
       </div>
+    </div>
+<!-- Warning popup for cannot be inquis -->
+    <div id="warning_cannot_be_inquis" class="modal_2 hide">
+      <div class="warning">
+        <h2>Warning!</h2>
+        <p>
+          <span data-field="cannot_be_inquis_student">Student</span> is not from Slytherin neither are they pureblood and can therefor not be in the Inqisitorial Squad.
+        </p>
+        <button id="close_cannot_be_inquis" class="close_cannot_be_inquis">
+          Understood
+        </button>
+      </div>
+
+
     </div>
     <!-- Popup: Student details -->
     <section id="popup">

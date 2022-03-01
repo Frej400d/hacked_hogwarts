@@ -2,7 +2,7 @@
 
 ! HUSK !
 
-- inquis 
+
 - lav interface
 - lav forside interface responsiv
 
@@ -10,6 +10,10 @@
 
 
 - hacked
+if system hacked = true
+- adding urself, make urself as object and push it into studentlist
+- make bloodstatus random, get random status, take half, muggle, pure into array and randomize
+- when add to inquis squad it needs to remove them after a while (in inquis, if system = hacked set timer)
 
 
 ! BUGS/BLOCKED !
@@ -19,6 +23,8 @@ filter.
 
 
 ---- DONE ----
+
+inquis ✔️
 bloodstatus✔️
 lav popup responsive✔️
 lav warning responsive✔️

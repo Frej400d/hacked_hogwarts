@@ -13,6 +13,7 @@ const Student = {
   bloodStatus: "",
   expelled: false,
   prefect: false,
+  inquisitor: false,
 };
 
 //empty array for students
@@ -128,10 +129,11 @@ function prepareStudents(stud) {
   student.gender = getGender(stud.gender.trim());
   student.house = getHouse(stud.house.trim());
   student.img = getStudentImg(stud.fullname.trim());
+  student.bloodStatus = getBloodStatus(student);
   student.expelled = false;
   student.prefect = false;
-  console.log(student.lastName);
-  student.bloodStatus = getBloodStatus(student);
+  student.inquisitor = false;
+  
   return student;
   //allStudents.push(student);
 }
@@ -208,6 +210,11 @@ function isPrefect(student) {
   return student.prefect;
 }
 
+function isInquisitor(student) {
+  return student.inquisitor;
+}
+
+
 function isNotExpelled(student) {
   return !student.expelled;
 }
@@ -218,6 +225,8 @@ function isExpelled(student) {
 
 function studentFilter(list) {
   //get filter depending on data-filter attribute
+  console.log("filter", settings.filterBy);
+  console.log("list", list);
   if (settings.filterBy === "expelled") {
     list = list.filter(isExpelled);
   } else {
@@ -232,6 +241,8 @@ function studentFilter(list) {
       list = list.filter(isHufflepuff);
     } else if (settings.filterBy === "prefect") {
       list = list.filter(isPrefect);
+    } else if (settings.filterBy === "inquisitor") {
+      list = list.filter(isInquisitor);
     }
   }
   return list;
@@ -507,10 +518,14 @@ function showPopup(studentData) {
   function closePopup() {
     document.querySelector("#popup").style.display = "none";
 
-    //fjern listener fra prefect button
+    //fjern listener fra prefect button og inquis buttin
+    //prefect
     popup
       .querySelector("#toggle_prefect")
       .removeEventListener("click", clickPrefect);
+    //inquis
+    popup.querySelector("#toggle_inquis").removeEventListener("click", clickInquisitor)
+    
     //remove all classes and img that are house based
     popup.querySelector(".popup_house").src = "";
     popup.querySelector(".popup_fullname").classList.remove("text_color_gryf");
@@ -566,13 +581,84 @@ function showPopup(studentData) {
     popup.querySelector("#prefect_img").src = "billeder/prefect_false.png";
   }
 
-  //listen to click on toggle prefect
+  //set inquisitor on load up of popup
+  if (studentData.inquisitor === true) {
+    popup.querySelector(".popup_inquis").src = "billeder/inquisitorial.png";
+  } else {
+    popup.querySelector(".popup_inquis").src = "billeder/inquisitorial_false.png";
+  }
+
+
+//listen to click on toggle inqisitor
+  popup.querySelector("#toggle_inquis").addEventListener("click", clickInquisitor)
+
+
+function clickInquisitor() {
+  console.log("clicked")
+  if (studentData.inquisitor === true) {
+    studentData.inquisitor = false;
+  } else {
+    tryToMakeInquisitor(studentData);
+  }
+  if (studentData.inquisitor === true) {
+    popup.querySelector(".popup_inquis").src = "billeder/inquisitorial.png";
+  } else {
+    popup.querySelector(".popup_inquis").src = "billeder/inquisitorial_false.png";
+  }
+
+}
+
+function tryToMakeInquisitor(selectedStudent) {
+    if (selectedStudent.house === "Slytherin" || selectedStudent.bloodStatus === "Pureblood"){
+    console.log("this student is inquisitor");
+    makeInquisitor(selectedStudent);
+    } else {
+      console.log("this student cannot be inquis")
+      cannotBeInqisitor(selectedStudent)
+    }
+}
+
+function makeInquisitor(student){
+  student.inquisitor = true;
+}
+
+function cannotBeInqisitor(student) {
+  //show inquis popup
+  document.querySelector("#warning_cannot_be_inquis").classList.remove("hide");
+
+   //show name of current student
+   document.querySelector(
+    "#warning_cannot_be_inquis [data-field=cannot_be_inquis_student]"
+  ).textContent = student.firstName + " " + student.lastName;
+
+
+
+//add eventlistener to close button
+  document
+  .querySelector("#warning_cannot_be_inquis #close_cannot_be_inquis")
+  .addEventListener("click", closeInqisWarning);
+}
+
+function closeInqisWarning() {
+  //close warning 
+  document.querySelector("#warning_cannot_be_inquis").classList.add("hide");
+  //remove eventlistener
+  document
+  .querySelector("#warning_cannot_be_inquis #close_cannot_be_inquis")
+  .removeEventListener("click", closeInqisWarning);
+  popup
+  .querySelector("#toggle_prefect")
+  .removeEventListener("click", clickPrefect);
+//inquis
+popup.querySelector("#toggle_inquis").removeEventListener("click", clickInquisitor)
+}
+//listen to click on toggle prefect
   popup
     .querySelector("#toggle_prefect")
     .addEventListener("click", clickPrefect);
 
   function clickPrefect() {
-    console.log("clicked");
+    //console.log("clicked");
     if (studentData.prefect === true) {
       studentData.prefect = false;
     } else {
@@ -667,4 +753,5 @@ function showPopup(studentData) {
       student.prefect = true;
     }
   }
+
 }
