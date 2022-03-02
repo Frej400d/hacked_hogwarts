@@ -652,6 +652,24 @@ button#close_cannot_expel_me {
   text-decoration: underline;
 }
 
+.sortBy[data-sort-direction="asc"]::after {
+  background-image: url("billeder/arrow_down.png");
+  background-size: 1em 1em;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  content: "";
+}
+
+.sortBy[data-sort-direction="desc"]::after {
+  background-image: url("billeder/arrow_up.png");
+  background-size: 1em 1em;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  content: "";
+}
+
 /*animationer*/
 .rotation {
   animation-name: rotate;
@@ -725,12 +743,6 @@ button#close_cannot_expel_me {
   }
   .sort_wrapper {
     display: flex;
-  }
-
-  .sort_arrow_img {
-    max-height: 2em;
-    justify-content: center;
-    margin: auto;
   }
 
   #search_container {
