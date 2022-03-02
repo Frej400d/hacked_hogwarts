@@ -28,11 +28,10 @@ h2 {
 }
 
 h2.displayed_students {
-font-size: 2em;
+  font-size: 2em;
 
-margin-top: 0;
-margin-bottom: 0;
-
+  margin-top: 0;
+  margin-bottom: 0;
 }
 header {
   margin: auto;
@@ -50,14 +49,23 @@ hr {
   margin-top: 1em;
 }
 
-#interface {
+.interface_numbers {
   background-color: white;
   border: 6px solid #ffb72d;
   margin-top: 3em;
   border-radius: 5px;
   margin-bottom: 3em;
+  display: grid;
+  justify-items: center;
 }
 
+.interface_wrapper {
+  display: flex;
+}
+
+.interface_img {
+  max-height: 5em;
+}
 
 /*student list*/
 #student_list {
@@ -551,7 +559,6 @@ button#close_cannot_be_inquis {
   scale: 1.1;
 }
 
-
 /*animationer*/
 .rotate {
   -ms-transform: rotate(180deg); /* IE 9 */
@@ -592,20 +599,23 @@ button#close_cannot_be_inquis {
   }
 
   h1 {
-    font-size: 5em;
+    font-size: 7em;
   }
 
   .interface_numbers h2 {
     margin: 0.5em;
   }
-
+}
+@media (min-width: 900px) {
   .interface_numbers {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    padding: 1em;
+  }
+  #student_list {
+    margin: 0;
   }
 
-}
-@media (min-width: 900px) {
   /*sort layout*/
 
   #sort_and_search {
@@ -640,14 +650,15 @@ button#close_cannot_be_inquis {
 }
 
 @media (min-width: 1300px) {
-  #student_list {
-    margin-left: 5em;
-    margin-right: 5em;
+  .interface_numbers {
+    display: flex;
+    justify-content: space-around;
+    max-height: 35em;
+    margin-top: 0;
+    padding: 1em;
   }
-
-  #interface {
-    margin-left: 5em;
-    margin-right: 5em;
+  #student_list {
+    margin: 0;
   }
 
   #popupinfo {

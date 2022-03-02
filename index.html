@@ -27,22 +27,58 @@
     <header>
       <section id="interface">
         <div class="heading">
-        <h1>Hogwarts Student List</h1>
-      </div>
-      <div class="interface_numbers">
-        <h2>Total number of students: <span data-field="interface_no">1</span>
-        </h2>      
-        <h2>Expelled students: <span data-field="expelled_no">1</span>
-        </h2>
-        <h2>Gryffindor students: <span data-field="gryffindor_no">1</span>
-        </h2>
-        <h2>Slytherin students: <span data-field="slytherin_no">1</span>
-        </h2>
-        <h2>Ravenclaw students: <span data-field="ravenclaw_no">1</span>
-        </h2>
-        <h2>Hufflepuff students: <span data-field="hufflepuff_no">1</span>
-        </h2>
-      </div>
+          <h1>Hogwarts Student List</h1>
+        </div>
+        <div class="interface_numbers">
+          <div class="interface_wrapper">
+            <img
+              class="interface_img"
+              src="billeder/expelled_false.png"
+              alt="Active Studens"
+            />
+            <h2>= <span data-field="interface_no">1</span></h2>
+          </div>
+          <div class="interface_wrapper">
+            <img
+              class="interface_img"
+              src="billeder/expelled_true.png"
+              alt="Expelled Studens"
+            />
+            <h2>= <span data-field="expelled_no">1</span></h2>
+          </div>
+          <div class="interface_wrapper">
+            <img
+              class="interface_img"
+              src="billeder/gryffindor_1.png"
+              alt="Gryffindor"
+            />
+            <h2>= <span data-field="gryffindor_no">1</span></h2>
+          </div>
+          <div class="interface_wrapper">
+            <img
+              class="interface_img"
+              src="billeder/slytherin.png"
+              alt="Slytherin"
+            />
+            <h2>= <span data-field="slytherin_no">1</span></h2>
+          </div>
+          <div class="interface_wrapper">
+            <img
+              class="interface_img"
+              src="billeder/ravenclaw.png"
+              alt="Ravenclaw"
+            />
+            <h2>= <span data-field="ravenclaw_no">1</span></h2>
+          </div>
+          <div class="interface_wrapper">
+            <img
+              class="interface_img"
+              src="billeder/hufflepuff.png"
+              alt="Hufflepuff"
+            />
+            <h2>= <span data-field="hufflepuff_no">1</span></h2>
+          </div>
+        </div>
       </section>
     </header>
 
@@ -107,12 +143,12 @@
             alt="prefect"
           />
           <img
-          class="filter"
-          data-action="filter"
-          data-filter="inquisitor"
-          src="billeder/inquisitorial.png"
-          alt="insqisitor badge"
-        />
+            class="filter"
+            data-action="filter"
+            data-filter="inquisitor"
+            src="billeder/inquisitorial.png"
+            alt="insqisitor badge"
+          />
         </div>
       </div>
 
@@ -167,9 +203,10 @@
           />
         </div>
       </div>
-      
+
       <hr />
-      <h2 class="displayed_students">Displayed students: <span data-field="displayed_no">1</span>
+      <h2 class="displayed_students">
+        Displayed students: <span data-field="displayed_no">1</span>
       </h2>
       <!-- Container til alle vores students -->
       <div id="student_container"></div>
@@ -189,19 +226,19 @@
         </button>
       </div>
     </div>
-<!-- Warning popup for cannot be inquis -->
+    <!-- Warning popup for cannot be inquis -->
     <div id="warning_cannot_be_inquis" class="modal_2 hide">
       <div class="warning">
         <h2>Warning!</h2>
         <p>
-          <span data-field="cannot_be_inquis_student">Student</span> is not from Slytherin neither are they pureblood and can therefor not be in the Inqisitorial Squad.
+          <span data-field="cannot_be_inquis_student">Student</span> is not from
+          Slytherin neither are they pureblood and can therefor not be in the
+          Inqisitorial Squad.
         </p>
         <button id="close_cannot_be_inquis" class="close_cannot_be_inquis">
           Understood
         </button>
       </div>
-
-
     </div>
     <!-- Popup: Student details -->
     <section id="popup">
