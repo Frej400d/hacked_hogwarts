@@ -111,6 +111,7 @@ function youCantExpelMe(selectedStudent) {
   //show cannot expel popup
   document.querySelector("#cannot_expel_me").classList.remove("hide");
 
+  document.querySelector(".cool_me").src = "img/smith_sunglasses.png";
   //add eventlistener to close button
   document
     .querySelector("#cannot_expel_me #close_cannot_expel_me")
@@ -581,6 +582,12 @@ function displayStudent(student) {
       clone.querySelector(".fullname").classList.add("text_color_huffle");
   }
 
+  //hackerman
+  if (student.hacker) {
+    clone.querySelector(".student_article").classList.add("anim-border");
+    clone.querySelector("article").classList.remove("student_article");
+  }
+
   //if student is expelled: hide expel button + remove as prefect + remove prefect badge
   if (student.expelled === true) {
     clone.querySelector(".expel_button").classList.add("hidden"),
@@ -880,7 +887,7 @@ function showPopup(studentData) {
 function hackTheSystem() {
   hacked = true;
   location.href = "#interface";
-
+  setInterval(draw, 33);
   //remove hacked button
   document.querySelector("#hack_hogwarts_button").classList.add("hidden");
 
