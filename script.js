@@ -16,6 +16,21 @@ const Student = {
   inquisitor: false,
 };
 
+//me object
+const StudentFreja = {
+  firstName: "Freja",
+  lastName: "Smith",
+  middleName: "",
+  nickName: "PandaPoob",
+  gender: "Girl",
+  profilePic: `img/smith_f.png`,
+  house: "Hufflepuff",
+  bloodStatus: "Muggleborn",
+  expelled: false,
+  prefect: false,
+  inquisitor: false,
+};
+
 //empty array for students
 let allStudents = [];
 //all active studens
@@ -52,9 +67,15 @@ function buttonListener() {
   const sortButtons = document.querySelectorAll(".sort");
   sortButtons.forEach((knap) => knap.addEventListener("click", selectSort));
 
+  //search buttons
   const searchBar = document.querySelector("#searchBar");
   searchBar.addEventListener("keyup", selectSearch);
   //console.log(event.target.value);
+
+  //hacked button
+  document
+    .querySelector("#hack_hogwarts_button")
+    .addEventListener("click", hackTheSystem);
 
   loadJSON();
 }
@@ -824,4 +845,22 @@ function showPopup(studentData) {
       student.prefect = true;
     }
   }
+}
+
+function hackTheSystem() {
+  let url = location.href;
+  location.href = "#interface";
+
+  //hacked button style
+  document.querySelector("#hack_hogwarts_button").classList.add("hacked");
+  //hacked overskrift
+  document.querySelector("#heading").textContent = "Hacked";
+  document.querySelector(".heading h1").classList.add("hacked_hogwarts");
+
+  addMyself();
+}
+
+function addMyself() {
+  allStudents.push(StudentFreja);
+  buildList();
 }
