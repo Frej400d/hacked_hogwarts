@@ -683,10 +683,10 @@ button#close_cannot_expel_me {
 } */
 
 @keyframes rotate {
-  from {
+  0% {
     transform: rotate(0deg);
   }
-  to {
+  100% {
     transform: rotate(180deg);
   }
 }

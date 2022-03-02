@@ -1,11 +1,12 @@
 
 
 ! HUSK !
-- lav symbol til sorting
+make animation
 
 ! BUGS/BLOCKED !
 
 ---- DONE ----
+lav symbol til sorting✔️
 when add to inquis squad it needs to remove them after a while (in inquis, if system = hacked set timer)✔️
 make bloodstatus random, get random status, take half, muggle, pure into array and randomize✔️
 adding urself, make urself as object and push it into studentlist✔️
