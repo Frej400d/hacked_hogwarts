@@ -20,15 +20,16 @@ const Student = {
 const StudentFreja = {
   firstName: "Freja",
   lastName: "Smith",
-  middleName: "",
+  middleName: undefined,
   nickName: "PandaPoob",
   gender: "Girl",
-  profilePic: `img/smith_f.png`,
+  profilePic: "img/smith_f.png",
   house: "Hufflepuff",
   bloodStatus: "Muggleborn",
   expelled: false,
   prefect: false,
   inquisitor: false,
+  hacker: true,
 };
 
 //empty array for students
@@ -80,12 +81,43 @@ function buttonListener() {
   loadJSON();
 }
 
-function expelStudent(student) {
+function expelStudent(selectedStudent) {
   console.log("expelled bish");
-  //make student expelled
-  student.expelled = true;
+  if (selectedStudent.hacker === true) {
+    console.log("You cannot expel this student!");
+    youCantExpelMe(selectedStudent);
+  } else {
+    //make student expelled
+    selectedStudent.expelled = true;
+  }
+  document
+    .querySelector(".expel_button")
+    .addEventListener("click", () => expelStudent(selectedStudent));
+
   //console.log(allStudents);
   buildList();
+}
+
+function youCantExpelMe(selectedStudent) {
+  //show cannot expel popup
+  document.querySelector("#cannot_expel_me").classList.remove("hide");
+
+  //add eventlistener to close button
+  document
+    .querySelector("#cannot_expel_me #close_cannot_expel_me")
+    .addEventListener("click", closeInqisWarning);
+}
+
+function closeInqisWarning() {
+  //close warning
+  document.querySelector("#cannot_expel_me").classList.add("hide");
+  //remove eventlistener
+  document
+    .querySelector("#cannot_expel_me #close_cannot_expel_me")
+    .removeEventListener("click", closeInqisWarning);
+  document
+    .querySelector(".expel_button")
+    .addEventListener("click", () => expelStudent(selectedStudent));
 }
 
 function selectSearch(event) {
@@ -153,7 +185,7 @@ function prepareStudents(stud) {
   student.lastName = getLastName(stud.fullname.trim());
   student.gender = getGender(stud.gender.trim());
   student.house = getHouse(stud.house.trim());
-  student.img = getStudentImg(stud.fullname.trim());
+  student.profilePic = getStudentImg(stud.fullname.trim());
   student.bloodStatus = getBloodStatus(student);
   student.expelled = false;
   student.prefect = false;
@@ -534,7 +566,7 @@ function displayStudent(student) {
   //set clone data
   clone.querySelector(".firstname").textContent = student.firstName;
   clone.querySelector(".lastname").textContent = student.lastName;
-  clone.querySelector("img.student_img").src = student.img;
+  clone.querySelector("img.student_img").src = student.profilePic;
   //clone.querySelector(".house").textContent = student.house;
 
   //show prefect badge on article
@@ -582,7 +614,7 @@ function displayStudent(student) {
 function showPopup(studentData) {
   const popup = document.querySelector("#popup");
   popup.style.display = "block";
-  popup.querySelector(".popup_studentimg").src = studentData.img;
+  popup.querySelector(".popup_studentimg").src = studentData.profilePic;
   popup.querySelector(".popup_firstname").textContent = studentData.firstName;
   popup.querySelector(".popup_middlename").textContent = studentData.middleName;
   popup.querySelector(".popup_nickname").textContent = studentData.nickName;
@@ -848,19 +880,48 @@ function showPopup(studentData) {
 }
 
 function hackTheSystem() {
-  let url = location.href;
   location.href = "#interface";
+
+  //remove hacked button
+  document.querySelector("#hack_hogwarts_button").classList.add("hidden");
 
   //hacked button style
   document.querySelector("#hack_hogwarts_button").classList.add("hacked");
   //hacked overskrift
   document.querySelector("#heading").textContent = "Hacked";
   document.querySelector(".heading h1").classList.add("hacked_hogwarts");
-
+  //hacked style
+  document.querySelector("body").classList.add("hacked_color");
+  document.querySelector(".interface_numbers").classList.add("hacked_border");
+  document.querySelector("#student_list").classList.add("hacked_border");
+  document.querySelector("hr").classList.add("hacked_hr");
   addMyself();
 }
 
 function addMyself() {
   allStudents.push(StudentFreja);
   buildList();
+
+  randomizeBloodStatus();
+}
+
+function randomizeBloodStatus() {
+  allStudents.forEach((student) => {
+    if (student.bloodStatus === "Pureblood") {
+      student.bloodStatus = getRandomBloodStatus();
+    } else {
+      student.bloodStatus = "Pureblood";
+    }
+  });
+}
+
+function getRandomBloodStatus() {
+  let bloodStatusNum = Math.floor(Math.random() * 3);
+  if (bloodStatusNum === 0) {
+    return "Pureblood";
+  } else if (bloodStatusNum === 1) {
+    return "Halfblood";
+  } else {
+    return "Muggleborn";
+  }
 }

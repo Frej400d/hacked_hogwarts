@@ -71,15 +71,30 @@ hr {
 }
 
 #hack_hogwarts_button:hover {
-  background-color: #e50505;
+  background-color: black;
+  color: #0ae12a;
+  border: 5px solid #0ae12a;
 }
 
 .hacked {
-  background-color: #e50505;
+  background-color: #0ae12a;
 }
 
 .hacked_hogwarts {
-  color: #e50505;
+  color: #0ae12a;
+}
+
+.hacked_color {
+  background-color: black;
+}
+
+.hacked_border {
+  border: 6px solid #0ae12a !important;
+}
+
+.hacked_hr {
+  color: #0ae12a;
+  border: 2px solid #0ae12a;
 }
 
 .interface_numbers {
@@ -589,6 +604,40 @@ button#close_cannot_be_inquis {
   cursor: pointer;
 }
 .close_cannot_be_inquis:hover {
+  scale: 1.1;
+}
+
+/*warning cannot expel me*/
+
+.modal_3 {
+  z-index: 4;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.801);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button#close_cannot_expel_me {
+  color: #050c26;
+  background-color: white;
+  border: 2px solid #ffb72d;
+  border-radius: 5px;
+  font-family: "Qwitcher Grypen", cursive;
+  font-size: 2em;
+  margin-left: 5em;
+  margin-right: 5em;
+  margin-bottom: 1em;
+  margin-top: 0;
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+#close_cannot_expel_me:hover {
   scale: 1.1;
 }
 
