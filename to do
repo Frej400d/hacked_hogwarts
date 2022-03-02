@@ -2,12 +2,7 @@
 
 ! HUSK !
 
-
-- lav interface
-- lav forside interface responsiv
-
 - lav symbol til sorting
-
 
 - hacked
 if system hacked = true
@@ -23,7 +18,9 @@ filter.
 
 
 ---- DONE ----
-
+style interface✔️
+lav forside interface responsiv✔️
+lav interface✔️
 inquis ✔️
 bloodstatus✔️
 lav popup responsive✔️

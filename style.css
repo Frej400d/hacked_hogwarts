@@ -49,6 +49,31 @@ hr {
   margin-top: 1em;
 }
 
+#hack_hogwarts {
+  display: grid;
+  justify-items: center;
+  margin-top: 3em;
+  margin-bottom: 5em;
+}
+
+#hack_hogwarts_button {
+  color: #050c26;
+  background-color: white;
+  border: 5px solid #ffb72d;
+  border-radius: 5px;
+  font-family: "Qwitcher Grypen", cursive;
+  font-size: 5em;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  cursor: pointer;
+}
+
+#hack_hogwarts_button:hover {
+  background-color: #e50505;
+}
+
 .interface_numbers {
   background-color: white;
   border: 6px solid #ffb72d;
