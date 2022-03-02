@@ -158,6 +158,13 @@ article h3 {
     1px 1px 0 #050c26; */
 }
 
+article p {
+  font-family: "Lobster", cursive;
+  font-size: 1.2em;
+  margin-bottom: 0em;
+  margin-top: 0.5em;
+}
+
 #image_wrapper {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
@@ -179,7 +186,7 @@ article h3 {
   border: 1px solid #050c26;
   margin-left: 1em;
   margin-right: 1em;
-  margin-top: 1em;
+  margin-top: 0.3em;
 }
 
 .descrip {
@@ -643,21 +650,23 @@ button#close_cannot_expel_me {
 
 /*animationer*/
 .rotate {
-  -ms-transform: rotate(180deg); /* IE 9 */
-  transform: rotate(180deg);
+  animation-name: rotate;
 }
 /* .rotate {
   animation-name: rotation;
   animation-duration: 1s;
   animation-timing-function: ease-in-out;
-}
+} */
 
-@keyframes rotation {
-  100% {
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
     transform: rotate(180deg);
   }
 }
- */
+
 /* responsive styling*/
 
 @media (min-width: 780px) {
@@ -712,6 +721,12 @@ button#close_cannot_expel_me {
     display: flex;
   }
 
+  .sort_arrow_img {
+    max-height: 2em;
+    justify-content: center;
+    margin: auto;
+  }
+
   #search_container {
     margin-right: 2em;
     grid-column: 3/4;
@@ -721,7 +736,7 @@ button#close_cannot_expel_me {
     font-family: "Qwitcher Grypen", cursive;
     font-size: 2em;
     background-color: white;
-    margin-right: 1em;
+    margin-right: 0.2em;
     margin-left: 1em;
     margin-bottom: 0;
     margin-top: 0;

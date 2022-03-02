@@ -36,6 +36,8 @@ const StudentFreja = {
 let allStudents = [];
 //all active studens
 let activeStudents = [];
+//orignal pureblood
+let originalPureblood = [];
 //bloodstatus
 let bloodStatus;
 
@@ -43,7 +45,8 @@ let bloodStatus;
 const url1 = "https://petlatkea.dk/2021/hogwarts/students.json";
 const url2 = "https://petlatkea.dk/2021/hogwarts/families.json";
 
-//let hogwartsData;
+//hacked
+let hacked = false;
 
 const settings = {
   filterBy: "all",
@@ -90,6 +93,9 @@ function expelStudent(selectedStudent) {
     //make student expelled
     selectedStudent.expelled = true;
   }
+
+  selectedStudent.prefect = false;
+
   document
     .querySelector(".expel_button")
     .addEventListener("click", () => expelStudent(selectedStudent));
@@ -480,9 +486,15 @@ function cleanData(data) {
 //function getInterfaceNumbers(){}
 
 function buildList() {
+  //hacked random bloodstatus
+  if (hacked) {
+    randomizeBloodStatus();
+  }
+
   const searchList = searchFunction(allStudents);
   const currentList = studentFilter(searchList);
   const sortedList = sortedStudents(currentList);
+
   displayList(sortedList);
   //const searchList = searchFunction(currentList);
 
@@ -526,11 +538,6 @@ function getInterfaceNumbers(studentList) {
     ".displayed_students [data-field=displayed_no]"
   ).textContent = `${studentList.length}`;
 
-  //if student is expelled remove from active students array
-  /* if (student.expelled === true) {
-    activeStudents = allStudents.unshift(student);
-  } */
-
   activeStudents = allStudents.filter((student) => !student.expelled);
   //find houses number
   document.querySelector(
@@ -567,6 +574,8 @@ function displayStudent(student) {
   clone.querySelector(".firstname").textContent = student.firstName;
   clone.querySelector(".lastname").textContent = student.lastName;
   clone.querySelector("img.student_img").src = student.profilePic;
+  clone.querySelector(".article_bloodstatus").textContent =
+    "Bloodstatus: " + student.bloodStatus;
   //clone.querySelector(".house").textContent = student.house;
 
   //show prefect badge on article
@@ -598,7 +607,6 @@ function displayStudent(student) {
   //if student is expelled: hide expel button + remove as prefect + remove prefect badge
   if (student.expelled === true) {
     clone.querySelector(".expel_button").classList.add("hidden"),
-      (student.prefect = false),
       (clone.querySelector(".prefect_badge").src = "");
   }
 
@@ -742,6 +750,19 @@ function showPopup(studentData) {
 
   function makeInquisitor(student) {
     student.inquisitor = true;
+    if (hacked) {
+      setTimeout(removeInquisitor, 3000, student);
+    }
+  }
+
+  function removeInquisitor(student) {
+    student.inquisitor = false;
+    if (studentData.inquisitor === true) {
+      popup.querySelector(".popup_inquis").src = "billeder/inquisitorial.png";
+    } else {
+      popup.querySelector(".popup_inquis").src =
+        "billeder/inquisitorial_false.png";
+    }
   }
 
   function cannotBeInqisitor(student) {
@@ -880,6 +901,7 @@ function showPopup(studentData) {
 }
 
 function hackTheSystem() {
+  hacked = true;
   location.href = "#interface";
 
   //remove hacked button
@@ -895,6 +917,13 @@ function hackTheSystem() {
   document.querySelector(".interface_numbers").classList.add("hacked_border");
   document.querySelector("#student_list").classList.add("hacked_border");
   document.querySelector("hr").classList.add("hacked_hr");
+
+  //array for original pureblood
+  allStudents.forEach((student) => {
+    if (student.bloodStatus === "Pureblood") {
+      originalPureblood.push(student);
+    }
+  });
   addMyself();
 }
 
@@ -907,7 +936,7 @@ function addMyself() {
 
 function randomizeBloodStatus() {
   allStudents.forEach((student) => {
-    if (student.bloodStatus === "Pureblood") {
+    if (originalPureblood.includes(student)) {
       student.bloodStatus = getRandomBloodStatus();
     } else {
       student.bloodStatus = "Pureblood";
