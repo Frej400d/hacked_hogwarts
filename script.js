@@ -50,7 +50,7 @@ let hacked = false;
 
 const settings = {
   filterBy: "all",
-  sortBy: "name",
+  sortBy: "firstName",
   sortDir: "asc",
   searchBy: "",
 };
@@ -70,6 +70,9 @@ function buttonListener() {
   //sort buttons
   const sortButtons = document.querySelectorAll(".sort");
   sortButtons.forEach((knap) => knap.addEventListener("click", selectSort));
+  //sort direction
+  /*  const sortImage = document.querySelectorAll(".sort_arrow_img");
+  sortImage.forEach((knap) => addEventListener("click", imgSortDirection)); */
 
   //search buttons
   const searchBar = document.querySelector("#searchBar");
@@ -146,15 +149,6 @@ function searchFunction(searchedStudents) {
   return searchedStudents;
 }
 
-/* function rotateArrow() {
-  console.log("arrow func");
-  //const arrow = document.querySelectorAll(".arrows");
-
-  //arrow.classList.add("rotate");
-
-  selectSort();
-} */
-
 async function loadJSON() {
   const resp = await fetch(url1);
   const hogwartsData = await resp.json();
@@ -167,14 +161,6 @@ async function loadJSON() {
   //console.table(bloodStatus);
   // loadJSON2(hogwartsData);
 }
-
-/* async function loadJSON2(hogwartsData) {
-  const jsonData = await fetch(url2);
-  const familiyData = await jsonData.json();
-  //show hogwarts data in a table in the console
-  //console.table(hogwartsData);
-  prepareData(hogwartsData, familiyData);
-} */
 
 function prepareData(hogwartsData) {
   allStudents = hogwartsData.map(prepareStudents);
@@ -201,22 +187,6 @@ function prepareStudents(stud) {
   return student;
   //allStudents.push(student);
 }
-
-/* function prepareStudents() {
-  hogwartsData.forEach((stud) => {
-    const student = Object.create(Student);
-    student.firstName = getFirstName(stud.fullname.trim());
-    student.middleName = getMiddleName(stud.fullname.trim());
-    student.nickName = getNickname(stud.fullname.trim());
-    student.lastName = getLastName(stud.fullname.trim());
-    student.gender = getGender(stud.gender.trim());
-    student.house = getHouse(stud.house.trim());
-    student.img = getStudentImg(stud.fullname.trim());
-
-    return student;
-    //allStudents.push(student);
-  });
-} */
 
 //filter
 function selectFilter(event) {
@@ -317,6 +287,13 @@ function selectSort(event) {
   document.querySelector(".arrows").classList.add("rotate"); */
   const sortBy = event.target.dataset.sort;
   const sortDir = event.target.dataset.sortDirection;
+
+  //find old picked sort and remove sortby
+  //console.log(settings.sortBy);
+  const oldElement = document.querySelector(`[data-sort='${settings.sortBy}']`);
+  oldElement.classList.remove("sortBy");
+  //choose picked sort
+  event.target.classList.add("sortBy");
 
   //toggle the direction
   if (sortDir === "asc") {

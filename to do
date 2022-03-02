@@ -1,23 +1,13 @@
 
 
 ! HUSK !
-
 - lav symbol til sorting
 
-- hacked
-if system hacked = true
-
-- make bloodstatus random, get random status, take half, muggle, pure into array and randomize
-- when add to inquis squad it needs to remove them after a while (in inquis, if system = hacked set timer)
-
-
 ! BUGS/BLOCKED !
-- if prefect is expelled then prefect is made false however you cannot 
-make new prefect without warning unless you first go visit the "expelled"
-filter.
-
 
 ---- DONE ----
+when add to inquis squad it needs to remove them after a while (in inquis, if system = hacked set timer)✔️
+make bloodstatus random, get random status, take half, muggle, pure into array and randomize✔️
 adding urself, make urself as object and push it into studentlist✔️
 style interface✔️
 lav forside interface responsiv✔️

@@ -648,9 +648,15 @@ button#close_cannot_expel_me {
   scale: 1.1;
 }
 
+.sortBy {
+  text-decoration: underline;
+}
+
 /*animationer*/
-.rotate {
+.rotation {
   animation-name: rotate;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
 }
 /* .rotate {
   animation-name: rotation;
