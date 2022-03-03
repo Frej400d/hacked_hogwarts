@@ -110,6 +110,12 @@ function youCantExpelMe(selectedStudent) {
   console.log("show popup");
   //show cannot expel popup
   document.querySelector("#cannot_expel_me").classList.remove("hide");
+  //add sound
+  const expelSound = document.querySelector("#expel_error_sound");
+  expelSound.currentTime = 0;
+  expelSound.play();
+  expelSound.volume = 0.5;
+
   //add eventlistener to close button
   document
     .querySelector("#cannot_expel_me #close_cannot_expel_me")
@@ -736,12 +742,18 @@ function showPopup(studentData) {
   function makeInquisitor(student) {
     student.inquisitor = true;
     if (hacked) {
-      setTimeout(removeInquisitor, 3000, student);
+      setTimeout(removeInquisitor, 2000, student);
     }
   }
 
   function removeInquisitor(student) {
     student.inquisitor = false;
+    if (hacked) {
+      const glitchSound = document.querySelector("#inquis_removed_sound");
+      glitchSound.currentTime = 0;
+      glitchSound.play();
+      glitchSound.volume = 0.2;
+    }
     if (studentData.inquisitor === true) {
       popup.querySelector(".popup_inquis").src = "billeder/inquisitorial.png";
     } else {
