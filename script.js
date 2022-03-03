@@ -467,12 +467,6 @@ function buildList() {
   const sortedList = sortedStudents(currentList);
 
   displayList(sortedList);
-  //const searchList = searchFunction(currentList);
-
-  /*   const searchList = searchFunction(allStudents);
-  const currentList = studentFilter(searchList);
-  //const searchList = searchFunction(currentList);
-  const sortedList = sortedStudents(currentList); */
 }
 
 function displayList(studentList) {
@@ -647,6 +641,9 @@ function showPopup(studentData) {
       popup
         .querySelector(".popup_bg_color")
         .classList.remove("bg_color_huffle");
+
+    //remove animation class for hacked inquis
+    popup.querySelector(".popup_inquis").classList.remove("shaking");
   }
 
   //remove buttons on expelled studens
@@ -742,17 +739,21 @@ function showPopup(studentData) {
   function makeInquisitor(student) {
     student.inquisitor = true;
     if (hacked) {
-      setTimeout(removeInquisitor, 2000, student);
+      popup.querySelector(".popup_inquis").classList.remove("shaking");
+      setTimeout(removeInquisitor, 1000, student);
     }
   }
 
   function removeInquisitor(student) {
     student.inquisitor = false;
     if (hacked) {
+      //sound effect for inquisitor glitch
       const glitchSound = document.querySelector("#inquis_removed_sound");
       glitchSound.currentTime = 0;
       glitchSound.play();
       glitchSound.volume = 0.2;
+      // animation for glitch
+      popup.querySelector(".popup_inquis").classList.add("shaking");
     }
     if (studentData.inquisitor === true) {
       popup.querySelector(".popup_inquis").src = "billeder/inquisitorial.png";
@@ -928,6 +929,13 @@ function hackTheSystem() {
       originalPureblood.push(student);
     }
   });
+  //remove all inquisitors
+  allStudents.forEach((student) => {
+    if (student.inquisitor === true) {
+      student.inquisitor = false;
+    }
+  });
+
   addMyself();
 }
 
