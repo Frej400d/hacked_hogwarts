@@ -96,7 +96,10 @@ function expelStudent(selectedStudent) {
     console.log("expelled bish");
     selectedStudent.expelled = true;
   }
+  //remove student as prefect
   selectedStudent.prefect = false;
+  //remove student from inquis squad
+  selectedStudent.inquisitor = false;
 
   document
     .querySelector(".expel_button")
