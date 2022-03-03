@@ -57,6 +57,7 @@ hr {
   margin-top: 1em;
 }
 
+/*hacked style*/
 #hack_hogwarts {
   display: grid;
   justify-items: center;
@@ -88,6 +89,10 @@ hr {
   background-color: #0ae12a;
 }
 
+.hacked_bg {
+  background-color: #0000008c;
+}
+
 .hacked_hogwarts {
   color: #0ae12a;
 }
@@ -100,11 +105,114 @@ hr {
   border: 6px solid #0ae12a !important;
 }
 
+.hacked_popup_border {
+  border-right: 3px dashed #0ae12a !important;
+}
+
+.hacked_popup_button {
+  border: 2px solid #0ae12a !important;
+}
+
 .hacked_hr {
   color: #0ae12a;
   border: 2px solid #0ae12a;
 }
 
+/*cannot be inquis warning*/
+.modal_2 {
+  z-index: 3;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.801);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button#close_cannot_be_inquis {
+  color: #050c26;
+  background-color: white;
+  border: 2px solid #ffb72d;
+  border-radius: 5px;
+  font-family: "Qwitcher Grypen", cursive;
+  font-size: 2em;
+  margin-left: 5em;
+  margin-right: 5em;
+  margin-bottom: 1em;
+  margin-top: 0;
+  cursor: pointer;
+}
+.close_cannot_be_inquis:hover {
+  scale: 1.1;
+}
+
+/*popup warning cannot expel me*/
+
+.modal_3 {
+  z-index: 4;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.637);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button#close_cannot_expel_me {
+  color: #0ae12a;
+  background-color: black;
+  border: 5px solid #0ae12a;
+  border-radius: 5px;
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.5em;
+  margin-left: 10em;
+  margin-right: 10em;
+  margin-bottom: 1em;
+  margin-top: 0.5em;
+  padding: 1em;
+  cursor: pointer;
+}
+
+#close_cannot_expel_me:hover {
+  scale: 1.1;
+}
+
+.cool_me {
+  margin: auto;
+  min-height: 150px;
+}
+
+.hacked_warning {
+  display: grid;
+  border: 5px solid #0ae12a;
+  border-radius: 10px;
+  padding: 0;
+  background-color: black;
+  margin-top: 0;
+}
+
+.hacked_warning h2 {
+  color: #0ae12a;
+  font-size: 3em;
+  margin: 0.5em;
+  font-family: "Press Start 2P", cursive;
+}
+
+.hacked_warning p {
+  color: #0ae12a;
+  font-family: "Press Start 2P", cursive;
+  font-size: 1em;
+  text-align: center;
+  margin: 2em;
+}
+
+/*interface student counter/numbers*/
 .interface_numbers {
   background-color: white;
   border: 6px solid #ffb72d;
@@ -589,76 +697,6 @@ button.close_removeother {
 
 .close_removeother:hover {
   background-color: #ffb72d;
-}
-
-/*cannot be inquis warning*/
-.modal_2 {
-  z-index: 3;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.801);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-button#close_cannot_be_inquis {
-  color: #050c26;
-  background-color: white;
-  border: 2px solid #ffb72d;
-  border-radius: 5px;
-  font-family: "Qwitcher Grypen", cursive;
-  font-size: 2em;
-  margin-left: 5em;
-  margin-right: 5em;
-  margin-bottom: 1em;
-  margin-top: 0;
-  cursor: pointer;
-}
-.close_cannot_be_inquis:hover {
-  scale: 1.1;
-}
-
-/*warning cannot expel me*/
-
-.modal_3 {
-  z-index: 4;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.801);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-button#close_cannot_expel_me {
-  color: #050c26;
-  background-color: white;
-  border: 2px solid #ffb72d;
-  border-radius: 5px;
-  font-family: "Qwitcher Grypen", cursive;
-  font-size: 2em;
-  margin-left: 5em;
-  margin-right: 5em;
-  margin-bottom: 1em;
-  margin-top: 0;
-  padding: 0.5em;
-  cursor: pointer;
-}
-
-#close_cannot_expel_me:hover {
-  scale: 1.1;
-}
-
-.cool_me {
-  margin: auto;
-  min-height: 150px;
 }
 
 .sortBy {

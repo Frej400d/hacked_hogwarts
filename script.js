@@ -582,10 +582,14 @@ function displayStudent(student) {
       clone.querySelector(".fullname").classList.add("text_color_huffle");
   }
 
-  //hackerman
+  //hackerman style
   if (student.hacker) {
     clone.querySelector(".student_article").classList.add("anim-border");
     clone.querySelector("article").classList.remove("student_article");
+    clone
+      .querySelector("article .fullname")
+      .classList.remove("text_color_huffle");
+    clone.querySelector("article .fullname").classList.add("hacked_hogwarts");
   }
 
   //if student is expelled: hide expel button + remove as prefect + remove prefect badge
@@ -676,6 +680,16 @@ function showPopup(studentData) {
     (popup.querySelector(".popup_house").src = "billeder/hufflepuff.png"),
       popup.querySelector(".popup_fullname").classList.add("text_color_huffle"),
       popup.querySelector(".popup_bg_color").classList.add("bg_color_huffle");
+  }
+
+  //hackerman style
+  if (studentData.hacker) {
+    popup.querySelector(".popup_bg_color").classList.remove("bg_color_huffle");
+    popup.querySelector(".popup_bg_color").classList.add("hacked_bg");
+    popup.querySelector("#popupinfo").classList.add("hacked_border");
+    popup.querySelector(".popup_left").classList.add("hacked_popup_border");
+    popup.querySelector("#toggle_prefect").classList.add("hacked_popup_button");
+    popup.querySelector("#toggle_inquis").classList.add("hacked_popup_button");
   }
 
   //set expelled image on load up
@@ -891,8 +905,6 @@ function hackTheSystem() {
   //remove hacked button
   document.querySelector("#hack_hogwarts_button").classList.add("hidden");
 
-  //hacked button style
-  document.querySelector("#hack_hogwarts_button").classList.add("hacked");
   //hacked overskrift
   document.querySelector("#heading").textContent = "Hacked";
   document.querySelector(".heading h1").classList.add("hacked_hogwarts");

@@ -1,9 +1,11 @@
 
 
 ! HUSK !
-
-- make myself special header
-- make hacked expel warning other style
+- try to make animation for warning text typewriter
+- sound effects
+- sound effect for inquis
+- try to make animation for inquis
+- sound effect for trying to expel me
 
 
 make animation
@@ -11,6 +13,8 @@ make animation
 ! BUGS/BLOCKED !
 
 ---- DONE ----
+make myself special header✔️
+make hacked expel warning other style✔️
 lav symbol til sorting✔️
 when add to inquis squad it needs to remove them after a while (in inquis, if system = hacked set timer)✔️
 make bloodstatus random, get random status, take half, muggle, pure into array and randomize✔️
