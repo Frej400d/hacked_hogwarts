@@ -886,9 +886,18 @@ function showPopup(studentData) {
 }
 
 function hackTheSystem() {
+  //set hacked true
   hacked = true;
+  //set location to start of website
   location.href = "#interface";
+  //start matrix animation
   setInterval(draw, 33);
+  //add hacked sound
+  const hackedSound = document.querySelector("#hacked_sound");
+  hackedSound.currentTime = 0;
+  hackedSound.play();
+  hackedSound.volume = 0.5;
+
   //remove hacked button
   document.querySelector("#hack_hogwarts_button").classList.add("hidden");
 
