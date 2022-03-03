@@ -174,7 +174,7 @@ button#close_cannot_expel_me {
   margin-left: 10em;
   margin-right: 10em;
   margin-bottom: 1em;
-  margin-top: 0.5em;
+  margin-top: 0;
   padding: 1em;
   cursor: pointer;
 }
@@ -195,6 +195,7 @@ button#close_cannot_expel_me {
   padding: 0;
   background-color: black;
   margin-top: 0;
+  max-width: 55em;
 }
 
 .hacked_warning h2 {
@@ -208,8 +209,9 @@ button#close_cannot_expel_me {
   color: #0ae12a;
   font-family: "Press Start 2P", cursive;
   font-size: 1em;
-  text-align: center;
   margin: 2em;
+  text-align: center;
+  line-height: 2em;
 }
 
 /*interface student counter/numbers*/

@@ -47,7 +47,7 @@ const url2 = "https://petlatkea.dk/2021/hogwarts/families.json";
 
 //hacked
 let hacked = false;
-
+//sort and filter settings
 const settings = {
   filterBy: "all",
   sortBy: "firstName",
@@ -88,46 +88,44 @@ function buttonListener() {
 }
 
 function expelStudent(selectedStudent) {
-  console.log("expelled bish");
   if (selectedStudent.hacker === true) {
     console.log("You cannot expel this student!");
     youCantExpelMe(selectedStudent);
   } else {
     //make student expelled
+    console.log("expelled bish");
     selectedStudent.expelled = true;
   }
-
   selectedStudent.prefect = false;
 
   document
     .querySelector(".expel_button")
-    .addEventListener("click", () => expelStudent(selectedStudent));
+    .removeEventListener("click", () => expelStudent(selectedStudent));
 
   //console.log(allStudents);
   buildList();
 }
 
 function youCantExpelMe(selectedStudent) {
+  console.log("show popup");
   //show cannot expel popup
   document.querySelector("#cannot_expel_me").classList.remove("hide");
-
-  document.querySelector(".cool_me").src = "img/smith_sunglasses.png";
   //add eventlistener to close button
   document
     .querySelector("#cannot_expel_me #close_cannot_expel_me")
-    .addEventListener("click", closeInqisWarning);
+    .addEventListener("click", closeExpelWarning);
 }
 
-function closeInqisWarning() {
+function closeExpelWarning() {
   //close warning
   document.querySelector("#cannot_expel_me").classList.add("hide");
   //remove eventlistener
   document
     .querySelector("#cannot_expel_me #close_cannot_expel_me")
-    .removeEventListener("click", closeInqisWarning);
+    .removeEventListener("click", closeExpelWarning);
   document
     .querySelector(".expel_button")
-    .addEventListener("click", () => expelStudent(selectedStudent));
+    .removeEventListener("click", () => expelStudent(selectedStudent));
 }
 
 function selectSearch(event) {
@@ -322,12 +320,6 @@ function sortedStudents(sortedList) {
     settings.direction = 1;
   }
 
-  /*   if (settings.sortDir === "desc") {
-    arrows.textContent = "⭐";
-  } else if (settings.sortDir === "asc") {
-    arrows.textContent = "☆";
-  }
- */
   sortedList = sortedList.sort(sortByProperty);
 
   function sortByProperty(a, b) {
@@ -341,11 +333,6 @@ function sortedStudents(sortedList) {
   return sortedList;
 }
 
-/* function getFullName(fullname) {
-  let cleanFullName = cleanData(fullname);
-  return cleanFullName;
-}
- */
 function getFirstName(fullname) {
   if (fullname.includes(" ")) {
     let firstName = fullname.slice(0, fullname.indexOf(" "));
