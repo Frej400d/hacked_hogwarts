@@ -89,11 +89,11 @@ function buttonListener() {
 
 function expelStudent(selectedStudent) {
   if (selectedStudent.hacker === true) {
-    console.log("You cannot expel this student!");
+    //console.log("You cannot expel this student!");
     youCantExpelMe(selectedStudent);
   } else {
     //make student expelled
-    console.log("expelled bish");
+    // console.log("expelled bish");
     selectedStudent.expelled = true;
   }
   //remove student as prefect
@@ -110,7 +110,7 @@ function expelStudent(selectedStudent) {
 }
 
 function youCantExpelMe(selectedStudent) {
-  console.log("show popup");
+  //console.log("show popup");
   //show cannot expel popup
   document.querySelector("#cannot_expel_me").classList.remove("hide");
   //add sound
@@ -200,7 +200,7 @@ function prepareStudents(stud) {
 function selectFilter(event) {
   //filter on a criteria
   const filter = event.target.dataset.filter;
-  console.log(`User selected ${filter}`);
+  //console.log(`User selected ${filter}`);
   document.querySelector(".chosen").classList.remove("chosen");
   this.classList.add("chosen");
   setFilter(filter);
@@ -208,7 +208,7 @@ function selectFilter(event) {
 
 function setFilter(filter) {
   settings.filterBy = filter;
-  console.log("setfilter");
+  //console.log("setfilter");
   buildList();
 }
 
@@ -266,7 +266,7 @@ function isExpelled(student) {
 
 function studentFilter(list) {
   //get filter depending on data-filter attribute
-  console.log("filter", settings.filterBy);
+  //console.log("filter", settings.filterBy);
   //console.log("list", list);
   if (settings.filterBy === "expelled") {
     list = list.filter(isExpelled);
@@ -290,7 +290,7 @@ function studentFilter(list) {
 }
 
 function selectSort(event) {
-  console.log("click");
+  //console.log("click");
   /*   document.querySelector(".arrows").classList.remove("rotate");
   document.querySelector(".arrows").classList.add("rotate"); */
   const sortBy = event.target.dataset.sort;
@@ -477,7 +477,7 @@ function displayList(studentList) {
   document.querySelector("#student_container").innerHTML = "";
   // build a new list
   studentList.forEach(displayStudent);
-  console.log(studentList);
+  //  console.log(studentList);
   //call numbers function
   getInterfaceNumbers(studentList);
 }
@@ -491,7 +491,7 @@ function getInterfaceNumbers(studentList) {
   document.querySelector(
     ".interface_numbers [data-field=expelled_no]"
   ).textContent = expelledNo;
-  console.log("expelled number", expelledNo);
+  //console.log("expelled number", expelledNo);
 
   //find non expelled students/total number of students
   //total students
@@ -610,7 +610,7 @@ function showPopup(studentData) {
   popup.querySelector(".popup_bloodstatus").textContent =
     "Blood Status: " + studentData.bloodStatus;
 
-  console.log(studentData);
+  //console.log(studentData);
 
   //make close button
   document
@@ -712,7 +712,7 @@ function showPopup(studentData) {
     .addEventListener("click", clickInquisitor);
 
   function clickInquisitor() {
-    console.log("clicked");
+    //console.log("clicked");
     if (studentData.inquisitor === true) {
       studentData.inquisitor = false;
     } else {
@@ -731,10 +731,10 @@ function showPopup(studentData) {
       selectedStudent.house === "Slytherin" ||
       selectedStudent.bloodStatus === "Pureblood"
     ) {
-      console.log("this student is inquisitor");
+      //console.log("this student is inquisitor");
       makeInquisitor(selectedStudent);
     } else {
-      console.log("this student cannot be inquis");
+      //console.log("this student cannot be inquis");
       cannotBeInqisitor(selectedStudent);
     }
   }
@@ -844,7 +844,7 @@ function showPopup(studentData) {
     //if theres more than 1 of the same gender in the same house get option to remove
 
     if (otherPrefectGender.length >= 1) {
-      console.log("There is already a prefect of this house and this gender");
+      //console.log("There is already a prefect of this house and this gender");
       removeOther(otherPrefectGender[0]);
     } else {
       makePrefect(selectedStudent);
@@ -881,7 +881,7 @@ function showPopup(studentData) {
       }
       //remove the other prefect
       function clickRemoveOther() {
-        console.log(selectedStudent);
+        //console.log(selectedStudent);
         removePrefect(otherPrefect);
         makePrefect(selectedStudent);
         closePopup();
